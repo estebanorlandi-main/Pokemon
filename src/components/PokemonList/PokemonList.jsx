@@ -1,51 +1,61 @@
 import { useEffect, useState } from "react";
-import { getPokemons } from "../../utils";
+import { getPokemons, getTypeIcon } from "../../utils";
 
-const colors = {
-  grass: "#78c850",
-  fire: "#f08030",
-  water: "#6890f0",
-  bug: "#a8b820",
-  normal: "#a8a878",
-  poison: "#a040a0",
-  electric: "#f8d030",
-  ground: "#e0c068",
-  fairy: "#ee99ac",
-  fighting: "#c03028",
-  psychic: "#f85888",
-  rock: "#b8a038",
-  ghost: "#705898",
-  ice: "#98d8d8",
-  dragon: "#7038f8",
-};
+import styles from "./PokemonList.module.css";
 
 function PokemonList() {
   const [pokemons, setPokemons] = useState([]);
+  const [page, setPage] = useState({
+    next: "",
+    prev: "",
+  });
+
+  const get = (page) =>
+    getPokemons(page).then((res) => {
+      setPokemons(res.results.map(({ data }) => data));
+      setPage({ next: res.next, prev: res.prev });
+    });
 
   useEffect(() => {
-    getPokemons().then((res) => {
-      setPokemons(res.map(({ data }) => data));
-    });
+    get();
   }, []);
 
   return (
-    <div>
-      {pokemons.map(({ id, name, types }) => (
-        <div key={id}>
-          <img
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
-          />
-          <p>{name}</p>
-          <ul>
-            {types.map(({ type: { name } }, i) => (
-              <li key={name + i} style={{ backgroundColor: colors[name] }}>
-                {name}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
+    <>
+      <button onClick={() => get(page.prev)}>Prev</button>
+      <button onClick={() => get(page.next)}>Next</button>
+
+      <div className={styles.container}>
+        {pokemons.map(({ id, name, types }) => (
+          <div
+            key={id}
+            className={styles.pokemon + ` bg-${types[0]?.type?.name}`}
+          >
+            <div className={styles.head}>
+              <img
+                className={styles.pokemon_image}
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
+              />
+            </div>
+
+            <div className={styles.body}>
+              <p className={styles.pokemon_name}>{name}</p>
+              <ul className={styles.types}>
+                {types.map(({ type: { name } }, i) => (
+                  <li key={name + i} className={styles.type + " c-" + name}>
+                    <img
+                      className={styles.type_image}
+                      src={getTypeIcon(name)}
+                    />{" "}
+                    {name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 
