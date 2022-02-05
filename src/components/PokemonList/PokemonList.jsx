@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { getPokemons } from "../../utils";
+
 const colors = {
   grass: "#78c850",
   fire: "#f08030",
@@ -27,7 +30,7 @@ function PokemonList() {
 
   return (
     <div>
-      {pokemons.map(({ id, name, type }) => (
+      {pokemons.map(({ id, name, types }) => (
         <div key={id}>
           <img
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
