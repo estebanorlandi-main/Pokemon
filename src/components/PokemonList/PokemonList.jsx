@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { getPokemons, getTypeIcon } from "../../utils";
+import { getPokemons } from "../../utils";
+import Icons from "../Icons/Icons";
 
 import styles from "./PokemonList.module.css";
 
@@ -43,10 +44,7 @@ function PokemonList() {
               <ul className={styles.types}>
                 {types.map(({ type: { name } }, i) => (
                   <li key={name + i} className={styles.type + " c-" + name}>
-                    <img
-                      className={styles.type_image}
-                      src={getTypeIcon(name)}
-                    />{" "}
+                    <Icons imageClass={styles.type_image} type={name} />
                     {name}
                   </li>
                 ))}
