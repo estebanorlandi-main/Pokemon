@@ -1,3 +1,11 @@
+.pageHandler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 0 1.5rem 0;
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -10,8 +18,14 @@
   align-items: center;
   gap: 1rem;
   border-radius: 0.25rem;
-  box-shadow: 0 0.25rem 0.25rem #0001;
+  box-shadow: 0 0.25rem 0.5rem #0001;
+  cursor: pointer;
+
+  transform: translate(100%, 0);
+  opacity: 0;
+
   transition: all 0.25s;
+  animation: toLeft 0.25s ease forwards;
 }
 
 .pokemon:hover {
@@ -64,15 +78,35 @@
 
 .type {
   list-style-type: none;
-  padding: 0.25rem 0.5rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.75rem;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 100%;
 }
 
 .type_image {
   width: 0.75rem;
   height: 0.75rem;
+}
+
+.anim {
+  transform: translate(100%, 0);
+  opacity: 0;
+  animation: toLeft 0.25s ease forwards;
+}
+
+@keyframes toLeft {
+  from {
+    transorm: translate(100%, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
 }

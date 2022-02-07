@@ -20,7 +20,7 @@ import water from "../../assets/icons/water.svg";
 
 import styles from "./Icons.module.css";
 
-function Icons({ type }) {
+function Icons({ type, imageClass }) {
   const [img, setImg] = useState(null);
 
   useEffect(() => {

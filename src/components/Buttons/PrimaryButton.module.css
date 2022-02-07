@@ -1,0 +1,13 @@
+.btn {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+}
+.btn svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}

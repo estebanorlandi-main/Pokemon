@@ -1,4 +1,23 @@
 .App {
+  --hex-grass: #78c850;
+  --hex-fire: #f08030;
+  --hex-fire: #b03031;
+  --hex-water: #6890f0;
+  --hex-bug: #a8b820;
+  --hex-normal: #a8a878;
+  --hex-poison: #a040a0;
+  --hex-electric: #f8d030;
+  --hex-ground: #e0c068;
+  --hex-fairy: #ee99ac;
+  --hex-fighting: #c03028;
+  --hex-psychic: #f85888;
+  --hex-rock: #b8a038;
+  --hex-ghost: #705898;
+  --hex-ice: #98d8d8;
+  --hex-dragon: #7038f8;
+  --hex-steel: #bfbdcb;
+  --hex-flying: #6f8bdc;
+  --hex-dark: #5e4c3e;
 }
 
 .c-grass {
@@ -46,6 +65,9 @@
 .c-dragon {
   background: #7038f8;
 }
+.c-steel {
+  background: var(--hex-steel);
+}
 
 .bg-grass {
   background: linear-gradient(45deg, #489820, #88e8b0);
@@ -55,7 +77,7 @@
 }
 
 .bg-fire {
-  background: linear-gradient(45deg, #d06010, #f07070);
+  background: linear-gradient(45deg, var(--hex-fire), #f08010);
 }
 .bg-fire img {
   filter: drop-shadow(0 0.5rem 0.25rem #d0601077);
@@ -150,4 +172,25 @@
 }
 .bg-dragon img {
   filter: drop-shadow(0 0.5rem 0.25rem #7038f877);
+}
+
+.bg-steel {
+  background: linear-gradient(45deg, var(--hex-steel), #9f9dab);
+}
+.bg-steel img {
+  filter: drop-shadow(0 0.5rem 0.25rem #48982077);
+}
+
+.bg-flying {
+  background: linear-gradient(45deg, var(--hex-flying), #9fbbfc);
+}
+.bg-flying img {
+  filter: drop-shadow(0 0.5rem 0.25rem #48982077);
+}
+
+.bg-dark {
+  background: linear-gradient(45deg, var(--hex-dark), #7e6c5e);
+}
+.bg-dark img {
+  filter: drop-shadow(0 0.5rem 0.25rem var(--hex-dark));
 }

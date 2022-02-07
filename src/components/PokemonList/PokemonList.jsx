@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
+import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
+
 import { getPokemons } from "../../utils";
+
+import PrimaryButton from "../Buttons/PrimaryButton";
 import Icons from "../Icons/Icons";
+import Image from "../Image/Image";
 
 import styles from "./PokemonList.module.css";
 
@@ -21,10 +26,16 @@ function PokemonList() {
     get();
   }, []);
 
+  const types = Array.from(
+    new Set(pokemons.map(({ types }) => types[0].type.name))
+  );
+
   return (
     <>
-      <button onClick={() => get(page.prev)}>Prev</button>
-      <button onClick={() => get(page.next)}>Next</button>
+      <div className={styles.pageHandler}>
+        <PrimaryButton Icon={BiChevronLeft} onClick={() => get(page.prev)} />
+        <PrimaryButton Icon={BiChevronRight} onClick={() => get(page.next)} />
+      </div>
 
       <div className={styles.container}>
         {pokemons.map(({ id, name, types }) => (
@@ -33,9 +44,10 @@ function PokemonList() {
             className={styles.pokemon + ` bg-${types[0]?.type?.name}`}
           >
             <div className={styles.head}>
-              <img
+              <Image
                 className={styles.pokemon_image}
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
+                animationClass={styles.anim}
               />
             </div>
 
@@ -43,9 +55,8 @@ function PokemonList() {
               <p className={styles.pokemon_name}>{name}</p>
               <ul className={styles.types}>
                 {types.map(({ type: { name } }, i) => (
-                  <li key={name + i} className={styles.type + " c-" + name}>
+                  <li key={name + i} className={styles.type + " bg-" + name}>
                     <Icons imageClass={styles.type_image} type={name} />
-                    {name}
                   </li>
                 ))}
               </ul>
