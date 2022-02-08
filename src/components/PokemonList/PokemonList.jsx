@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
 
-import { getPokemons } from "../../utils";
+import { getPokemons } from "utils";
 
-import PrimaryButton from "../Buttons/PrimaryButton";
-import PokemonCard from "../PokemonCard/PokemonCard";
+import PrimaryButton from "components/Buttons/PrimaryButton";
+import PokemonCard from "components/PokemonCard/PokemonCard";
 
 import styles from "./PokemonList.module.css";
 

@@ -1,14 +1,13 @@
-import Image from "components/Image/Image";
 import ListTypes from "components/ListTypes/ListTypes";
+import Image from "components/Image/Image";
 
 import styles from "./PokemonCard.module.css";
 
 function PokemonCard({ id, name, types }) {
   return (
-    <div className={styles.pokemon + ` bg-${types[0]?.type?.name}`}>
+    <div className={`${styles.pokemon} bg-${types[0]?.type?.name}`}>
       <Image
         className={styles.pokemon_image}
-        animationClass={styles.anim}
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
       />
 
