@@ -1,14 +1,11 @@
-import { getIconComponent } from "../../utils";
+import { getIconComponent, remToPx } from "../../utils";
 
-function ListTypes({ types, className }) {
-  const remToPx = (rem) =>
-    rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
-
+function ListTypes({ types, size = 1, className }) {
   const TypesComponents = types.map(({ type: { name }, i }) => {
     const Icon = getIconComponent(name);
     return (
       <li key={name + i} className={className}>
-        <Icon size={remToPx(1)} type={name} />
+        <Icon size={remToPx(size)} type={name} />
       </li>
     );
   });

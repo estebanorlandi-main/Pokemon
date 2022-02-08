@@ -19,6 +19,9 @@ export const getPokemons = (page) => {
   });
 };
 
+export const getPokemonImage = (id) =>
+  `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+
 export function getIconComponent(type) {
   switch (type) {
     case "bug":
@@ -61,3 +64,27 @@ export function getIconComponent(type) {
       return Icons.Normal;
   }
 }
+
+export const remToPx = (rem) =>
+  rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+export const typesArray = [
+  { type: { name: "bug" } },
+  { type: { name: "dark" } },
+  { type: { name: "dragon" } },
+  { type: { name: "electric" } },
+  { type: { name: "fairy" } },
+  { type: { name: "fighting" } },
+  { type: { name: "fire" } },
+  { type: { name: "flying" } },
+  { type: { name: "ghost" } },
+  { type: { name: "grass" } },
+  { type: { name: "ground" } },
+  { type: { name: "ice" } },
+  { type: { name: "normal" } },
+  { type: { name: "poison" } },
+  { type: { name: "psychic" } },
+  { type: { name: "rock" } },
+  { type: { name: "steel" } },
+  { type: { name: "water" } },
+];

@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  gap: 3rem;
+}
+
+.title {
+  font-size: 1.25rem;
+}
+
+.types {
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+.type {
+  margin: 0;
+  transition: all 0.25s;
+}
+
+.type:hover {
+  transform: scale(150%);
+}
