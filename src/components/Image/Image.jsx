@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Image({ src, className, animationClass }) {
+function Image({ alt, src, className, animationClass }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const handleLoad = () => setIsLoaded(true);
@@ -10,6 +10,7 @@ function Image({ src, className, animationClass }) {
       onLoad={handleLoad}
       className={`${className} ${isLoaded ? animationClass : ""}`}
       src={src}
+      alt={alt}
     />
   );
 }

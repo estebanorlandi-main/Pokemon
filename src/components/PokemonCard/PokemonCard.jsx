@@ -9,6 +9,7 @@ function PokemonCard({ id, name, types }) {
       <Image
         className={styles.pokemon_image}
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
+        alt={name}
       />
 
       <div className={styles.body}>

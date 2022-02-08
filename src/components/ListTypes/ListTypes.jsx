@@ -1,11 +1,14 @@
 import { getIconComponent } from "../../utils";
 
 function ListTypes({ types, className }) {
-  const TypesComponents = types.map(({ type: { name } }) => {
+  const remToPx = (rem) =>
+    rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+  const TypesComponents = types.map(({ type: { name }, i }) => {
     const Icon = getIconComponent(name);
     return (
-      <li className={className}>
-        <Icon size="1.25rem" type={name} />
+      <li key={name + i} className={className}>
+        <Icon size={remToPx(1)} type={name} />
       </li>
     );
   });
