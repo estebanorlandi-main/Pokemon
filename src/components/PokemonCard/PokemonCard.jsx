@@ -1,5 +1,5 @@
-import Image from "../Image/Image";
-import ListTypes from "../ListTypes/ListTypes";
+import Image from "components/Image/Image";
+import ListTypes from "components/ListTypes/ListTypes";
 
 import styles from "./PokemonCard.module.css";
 
