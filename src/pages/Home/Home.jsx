@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
 
@@ -8,9 +8,28 @@ import PrimaryButton from "components/Buttons/PrimaryButton";
 import PokemonList from "components/PokemonList/PokemonList";
 
 import styles from "./Home.module.css";
+import { useSearchParams } from "react-router-dom";
+
+const useQuery = () => {
+  const [query, setQuery] = useState({});
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    for (const entry of searchParams.entries()) {
+      const [param, value] = entry;
+      setQuery((old) => ({
+        ...old,
+        [param]: value,
+      }));
+    }
+  }, [searchParams]);
+
+  return query;
+};
 
 function Home() {
   const dispatch = useDispatch();
+  const query = useQuery();
 
   const { next, prev } = useSelector((state) => state.pokemons);
 
