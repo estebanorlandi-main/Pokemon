@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function PokemonCard({ id, name, types }) {
   return (
-    <Link to={`/pokemon/${id}`}>
+    <Link className={styles.pokemon_link} to={`/pokemon/${id}`}>
       <div className={`${styles.pokemon} bg-${types[0]?.type?.name}`}>
         <Image
           className={styles.pokemon_image}

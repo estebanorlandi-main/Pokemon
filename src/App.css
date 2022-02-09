@@ -17,7 +17,7 @@
   --hex-dragon: #7038f8;
   --hex-steel: #bfbdcb;
   --hex-flying: #6f8bdc;
-  --hex-dark: #5e4c3e;
+  --hex-dark: #3e3e3e;
 }
 
 .c-grass {
@@ -67,6 +67,9 @@
 }
 .c-steel {
   background: var(--hex-steel);
+}
+.c-dark {
+  background: var(--hex-dark);
 }
 
 .bg-grass {
