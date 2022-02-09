@@ -19,6 +19,10 @@ export const getPokemons = (page) => {
   });
 };
 
+export const getDetails = (id) => {
+  return axios(`https://pokeapi.co/api/v2/pokemon/${id}`);
+};
+
 export const getPokemonImage = (id) =>
   `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 

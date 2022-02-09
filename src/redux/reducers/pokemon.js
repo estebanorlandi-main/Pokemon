@@ -1,4 +1,8 @@
-import { GET_POKEMONS } from "redux/actions/pokemon";
+import {
+  GET_DETAILS_POKEMONS,
+  GET_POKEMONS,
+  REMOVE_DETAILS_POKEMON,
+} from "redux/actions/pokemon";
 
 const initialState = {
   pokemons: [],
@@ -19,6 +23,18 @@ function pokemonReducer(state = initialState, action) {
         pokemons: results.map(({ data }) => data),
         next,
         prev,
+      };
+
+    case GET_DETAILS_POKEMONS:
+      return {
+        ...state,
+        pokemon: action.payload?.data,
+      };
+
+    case REMOVE_DETAILS_POKEMON:
+      return {
+        ...state,
+        pokemon: {},
       };
     default:
       return state;
