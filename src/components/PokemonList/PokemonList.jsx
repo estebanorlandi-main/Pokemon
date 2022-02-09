@@ -1,43 +1,17 @@
-import { useEffect, useState } from "react";
-import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
-
-import { getPokemons } from "utils";
-
-import PrimaryButton from "components/Buttons/PrimaryButton";
 import PokemonCard from "components/PokemonCard/PokemonCard";
 
 import styles from "./PokemonList.module.css";
+import { useSelector } from "react-redux";
 
 function PokemonList() {
-  const [pokemons, setPokemons] = useState([]);
-  const [page, setPage] = useState({
-    next: "",
-    prev: "",
-  });
-
-  const get = (page) =>
-    getPokemons(page).then((res) => {
-      setPokemons(res.results.map(({ data }) => data));
-      setPage({ next: res.next, prev: res.prev });
-    });
-
-  useEffect(() => {
-    get();
-  }, []);
+  const { pokemons } = useSelector((state) => state.pokemons);
 
   return (
-    <>
-      <div className={styles.pageHandler}>
-        <PrimaryButton Icon={BiChevronLeft} onClick={() => get(page.prev)} />
-        <PrimaryButton Icon={BiChevronRight} onClick={() => get(page.next)} />
-      </div>
-
-      <div className={styles.container}>
-        {pokemons.map(({ id, name, types }) => (
-          <PokemonCard key={id} id={id} name={name} types={types} />
-        ))}
-      </div>
-    </>
+    <div className={styles.container}>
+      {pokemons.map(({ id, name, types }) => (
+        <PokemonCard key={id} id={id} name={name} types={types} />
+      ))}
+    </div>
   );
 }
 

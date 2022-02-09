@@ -1,3 +1,11 @@
 .container {
   padding: 2rem 5vw;
 }
+
+.pageHandler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 0 1.5rem 0;
+}
