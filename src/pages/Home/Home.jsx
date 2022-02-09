@@ -14,7 +14,7 @@ function Home() {
 
   const { next, prev } = useSelector((state) => state.pokemons);
 
-  useEffect(() => dispatch(fetchPokemons()), []);
+  useEffect(() => dispatch(fetchPokemons()), [dispatch]);
   const getPage = (page) => dispatch(fetchPokemons(page));
 
   return (

@@ -1,5 +1,4 @@
 import ListTypes from "components/ListTypes/ListTypes";
-import { useEffect, useState } from "react";
 import { typesArray } from "utils";
 
 import styles from "./Landing.module.css";
