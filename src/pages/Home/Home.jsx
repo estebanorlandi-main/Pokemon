@@ -30,6 +30,7 @@ const useQuery = () => {
 function Home() {
   const dispatch = useDispatch();
   const query = useQuery();
+  console.log(query);
 
   const { next, prev } = useSelector((state) => state.pokemons);
 
