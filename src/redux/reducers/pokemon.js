@@ -2,6 +2,7 @@ import {
   GET_DETAILS_POKEMONS,
   GET_POKEMONS,
   REMOVE_DETAILS_POKEMON,
+  REMOVE_POKEMONS,
 } from "redux/actions/pokemon";
 
 const initialState = {
@@ -36,6 +37,13 @@ function pokemonReducer(state = initialState, action) {
         ...state,
         pokemon: {},
       };
+
+    case REMOVE_POKEMONS:
+      return {
+        ...state,
+        pokemons: [],
+      };
+
     default:
       return state;
   }

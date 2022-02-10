@@ -1,48 +1,41 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
 
-import { fetchPokemons } from "redux/actions/pokemon";
+import { fetchPokemons, removePokemons } from "redux/actions/pokemon";
 
 import PrimaryButton from "components/Buttons/PrimaryButton";
 import PokemonList from "components/PokemonList/PokemonList";
+//import { useQuery } from "utils/hooks";
 
 import styles from "./Home.module.css";
-import { useSearchParams } from "react-router-dom";
 
-const useQuery = () => {
-  const [query, setQuery] = useState({});
-  const [searchParams] = useSearchParams();
-
-  useEffect(() => {
-    for (const entry of searchParams.entries()) {
-      const [param, value] = entry;
-      setQuery((old) => ({
-        ...old,
-        [param]: value,
-      }));
-    }
-  }, [searchParams]);
-
-  return query;
-};
-
-function Home() {
+export function Home() {
   const dispatch = useDispatch();
-  const query = useQuery();
-  console.log(query);
-
-  const { next, prev } = useSelector((state) => state.pokemons);
+  //const query = useQuery();
 
   useEffect(() => dispatch(fetchPokemons()), [dispatch]);
-  const getPage = (page) => dispatch(fetchPokemons(page));
+
+  const { prev, next } = useSelector((state) => state.pokemons);
+  const prevPage = () => {
+    dispatch(removePokemons());
+    dispatch(fetchPokemons(prev));
+  };
+  const nextPage = () => {
+    dispatch(removePokemons());
+    dispatch(fetchPokemons(next));
+  };
 
   return (
     <main>
       <div className={styles.container}>
         <div className={styles.pageHandler}>
-          <PrimaryButton Icon={BiChevronLeft} onClick={() => getPage(prev)} />
-          <PrimaryButton Icon={BiChevronRight} onClick={() => getPage(next)} />
+          {prev ? (
+            <PrimaryButton Icon={BiChevronLeft} onClick={prevPage} />
+          ) : null}
+          {next ? (
+            <PrimaryButton Icon={BiChevronRight} onClick={nextPage} />
+          ) : null}
         </div>
 
         <PokemonList />
@@ -50,5 +43,3 @@ function Home() {
     </main>
   );
 }
-
-export default Home;

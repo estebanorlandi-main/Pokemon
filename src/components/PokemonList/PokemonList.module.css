@@ -4,6 +4,11 @@
   gap: 1rem;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (min-width: 30rem) {
   .container {
     grid-template-columns: repeat(2, 1fr);
