@@ -1,12 +1,10 @@
 import PokemonCard from "components/PokemonCard/PokemonCard";
 
-import styles from "./PokemonList.module.css";
-import { useSelector } from "react-redux";
 import { Loader } from "components/Loader/Loader";
 
-function PokemonList() {
-  const { pokemons } = useSelector((state) => state.pokemons);
+import styles from "./PokemonList.module.css";
 
+function PokemonList({ pokemons }) {
   return (
     <>
       {pokemons.length ? (

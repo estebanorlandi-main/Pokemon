@@ -11,6 +11,7 @@ export const getPokemons = (page) =>
               next: data.next,
               prev: data.previous,
               results: res,
+              totalPokemons: data.count,
             });
           })
           .catch(reject);
