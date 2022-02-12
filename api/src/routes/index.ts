@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import pokemonRoutes from "./pokemon";
+import pokemonRoutes from "./pokemons";
 
 const router = Router();
 
@@ -8,15 +8,15 @@ router.get("/", (req: Request, res: Response) => {
     home: {
       path: "/",
     },
-    pokemon: [
+    pokemons: [
       {
-        path: "/pokemon",
+        path: "/pokemons",
         response: "return array of pokemons",
         query: null,
       },
       {
-        path: "/pokemon/:id",
-        response: "return pokemon by id",
+        path: "/pokemons/:page",
+        response: "return pokemons in page",
         query: null,
       },
     ],
