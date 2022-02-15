@@ -14,6 +14,6 @@ export interface PokemonType {
 
 export interface Pokemon {
   name: string;
-  types: PokemonType[];
+  types: string[];
   stats: PokemonStat[];
 }

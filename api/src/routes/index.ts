@@ -23,6 +23,6 @@ router.get("/", (req: Request, res: Response) => {
   });
 });
 
-router.use("/pokemon", pokemonRoutes);
+router.use("/pokemons", pokemonRoutes);
 
 export default router;

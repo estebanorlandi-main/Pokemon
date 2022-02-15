@@ -12,5 +12,5 @@ app.use(routes);
 run();
 
 app.listen(PORT, () =>
-  console.log(`[server]: Server is running at http://localhost:${PORT}`)
+  console.log(`[server]: Server is running at port ${PORT}`)
 );

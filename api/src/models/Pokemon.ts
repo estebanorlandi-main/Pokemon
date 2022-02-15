@@ -9,7 +9,7 @@ const PokemonSchema: Schema = new Schema<Pokemon>({
       name: String,
     },
   ],
-  types: [{ type: Schema.Types.ObjectId, ref: "Type" }],
+  types: [{ type: String, required: false }],
 });
 
 const PokemonModel = model("Pokemon", PokemonSchema);
