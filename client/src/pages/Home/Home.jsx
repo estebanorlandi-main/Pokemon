@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
 
 import { fetchPokemons, removePokemons } from "redux/actions/pokemon";
-import { useQuery } from "utils";
+//import { useQuery } from "utils";
 
 import PrimaryButton from "components/Buttons/PrimaryButton";
 import PokemonList from "components/PokemonList/PokemonList";
@@ -12,7 +12,7 @@ import styles from "./Home.module.css";
 
 export function Home() {
   const dispatch = useDispatch();
-  const query = useQuery();
+  //const query = useQuery();
 
   const [page, setPage] = useState(1);
 
