@@ -1,8 +1,9 @@
 import PokemonModel from "../models/Pokemon";
 
-import { fetchPokemons } from "./Pokeapi";
+import { fetchPokemons } from "./pokeapi";
 import { PokeapiStats, PokeapiType } from "./pokeapiTypes";
 import { Pokemon } from "./pokemonTypes";
+import { pokeapi } from "./urls";
 
 const save_pokemon = (pokemon: Pokemon) => {
   const new_pokemon = new PokemonModel({
@@ -15,7 +16,7 @@ const save_pokemon = (pokemon: Pokemon) => {
 };
 
 export const load_pokemons = async () => {
-  let currentUrl: string | null = "https://pokeapi.co/api/v2/pokemon/";
+  let currentUrl: string | null = pokeapi.pokemons;
 
   while (currentUrl) {
     const promise = fetchPokemons(currentUrl);

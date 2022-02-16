@@ -1,15 +1,42 @@
 import { Request, Response } from "express";
 import PokemonModel from "../models/Pokemon";
+import { Pokemon } from "../utils/pokemonTypes";
+
+const options = {
+  perPage: 20,
+};
+
+const paginate = (page: number) => ({
+  skip: page ? page * options.perPage : 0,
+  limit: page ? page * options.perPage : options.perPage,
+});
+
+const query = async (find: object, skip: number, limit: number) => {
+  const data = await PokemonModel.find(find).skip(skip).limit(limit);
+  return data;
+};
 
 export default {
   getPokemons: async function (req: Request, res: Response) {
     try {
       const { type } = req.query;
-      const pokemons = await PokemonModel.find(type ? { types: type } : {});
+      const page = req.params.page ? Number(req.params.page) : 0;
 
-      return res.json({ results: pokemons, count: pokemons.length });
+      const { skip, limit } = paginate(page);
+
+      const pokemons = await query(type ? { types: type } : {}, skip, limit);
+
+      if (!pokemons.length) throw new Error("Pokemons not found");
+
+      return res.json({
+        results: pokemons,
+        count: pokemons.length,
+        success: true,
+      });
     } catch (e: any) {
-      res.status(505).json("Error!");
+      console.log({ ...e });
+      const { name, message } = e;
+      return res.status(404).json({ name, message, success: false });
     }
   },
 };
