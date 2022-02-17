@@ -1,4 +1,4 @@
 export const pokeapi = {
-  base: "https://pokeapi.co",
-  pokemons: "https://pokeapi.co/pokemon",
+  base: "https://pokeapi.co/api/v2",
+  pokemons: "https://pokeapi.co/api/v2/pokemon",
 };

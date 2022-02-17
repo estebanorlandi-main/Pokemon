@@ -3,6 +3,7 @@ import { Pokemon } from "../utils/pokemonTypes";
 
 const PokemonSchema: Schema = new Schema<Pokemon>({
   name: { type: String, required: true },
+  id: { type: Number, required: true },
   stats: [
     {
       base: String,

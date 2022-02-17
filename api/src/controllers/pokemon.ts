@@ -12,7 +12,12 @@ const paginate = (page: number) => ({
 });
 
 const query = async (find: object, skip: number, limit: number) => {
-  const data = await PokemonModel.find(find).skip(skip).limit(limit);
+  const options = {
+    name: 1,
+    id: 1,
+    types: 1,
+  };
+  const data = await PokemonModel.find(find, options).skip(skip).limit(limit);
   return data;
 };
 
