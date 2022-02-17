@@ -5,12 +5,17 @@ export const GET_DETAILS_POKEMONS = "GET_DETAILS_POKEMONS";
 export const REMOVE_DETAILS_POKEMON = "REMOVE_DETAILS_POKEMON";
 export const REMOVE_POKEMONS = "REMOVE_POKEMONS";
 
-export const fetchPokemons = (page) => {
+export const fetchPokemons = (page, type) => {
   return async (dispatch) => {
-    const promise = getPokemons(page);
-    const res = await promise;
+    const data = await getPokemons(page, type);
 
-    dispatch({ type: GET_POKEMONS, payload: res });
+    const { results } = data;
+
+    const payload = {
+      results: results,
+    };
+
+    dispatch({ type: GET_POKEMONS, payload });
   };
 };
 

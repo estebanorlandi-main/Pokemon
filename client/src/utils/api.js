@@ -1,23 +1,15 @@
 import axios from "axios";
 
-export const getPokemons = (page) =>
-  new Promise((resolve, reject) =>
-    axios(page || "https://pokeapi.co/api/v2/pokemon/")
-      .then(({ data }) => {
-        const promises = data.results.map(({ url }) => axios(url));
-        Promise.all(promises)
-          .then((res) => {
-            resolve({
-              next: data.next,
-              prev: data.previous,
-              results: res,
-              totalPokemons: data.count,
-            });
-          })
-          .catch(reject);
-      })
-      .catch(reject)
-  );
+const { REACT_APP_API_URL } = process.env;
+
+export const getPokemons = async (page, type) => {
+  const typeQuery = type ? "?type=" + type : "";
+  console.log(type);
+
+  const url = REACT_APP_API_URL + `/pokemons${typeQuery}`;
+  const { data } = await axios(url);
+  return data;
+};
 
 export const getDetails = (id) =>
   axios(`https://pokeapi.co/api/v2/pokemon/${id}`);

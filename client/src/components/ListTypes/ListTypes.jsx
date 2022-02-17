@@ -1,11 +1,11 @@
 import { getIconComponent, remToPx } from "../../utils";
 
 function ListTypes({ types, size = 1, className, onClick }) {
-  const TypesComponents = types.map(({ type: { name }, i }) => {
-    const Icon = getIconComponent(name);
+  const TypesComponents = types.map((type, i) => {
+    const Icon = getIconComponent(type);
     return (
-      <li onClick={() => onClick(name)} key={name + i} className={className}>
-        <Icon size={remToPx(size)} type={name} />
+      <li onClick={() => onClick(type)} key={type + i} className={className}>
+        <Icon size={remToPx(size)} type={type} />
       </li>
     );
   });

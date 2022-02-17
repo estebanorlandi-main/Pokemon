@@ -9,7 +9,7 @@ function PokemonCard({ id, name, types }) {
   const pokemonImg = getPokemonImage(id);
   return (
     <Link className={styles.pokemon_link} to={`/pokemon/${id}`}>
-      <div className={`${styles.pokemon} bg-${types[0]?.type?.name}`}>
+      <div className={`${styles.pokemon} bg-${types[0]}`}>
         <Image className={styles.pokemon_image} src={pokemonImg} alt={name} />
 
         <div className={styles.body}>

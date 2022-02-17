@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 function Landing() {
   const navigate = useNavigate();
 
-  const handleType = (name) => navigate(`/home?type=${name}`);
+  const handleType = (name) => navigate(`/home/${name}`);
 
   return (
     <main>
