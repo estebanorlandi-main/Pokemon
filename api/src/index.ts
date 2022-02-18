@@ -4,11 +4,14 @@ import routes from "./routes";
 import run from "./db";
 import morgan from "morgan";
 
-import { PORT } from "./config";
+import { PORT, NODE_ENV } from "./config";
 
 const app = express();
 
-app.use(morgan("dev"));
+if (NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
+
 app.use(cors());
 app.use(routes);
 
