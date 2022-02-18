@@ -4,8 +4,9 @@ import routes from "./routes";
 import run from "./db";
 import morgan from "morgan";
 
+import { PORT } from "./config";
+
 const app = express();
-const PORT = process.env.PORT || 8000;
 
 app.use(morgan("dev"));
 app.use(cors());
