@@ -10,8 +10,7 @@ const db = mongoose.connection;
 db.once("open", async () => {
   try {
     const pokemons = await PokemonModel.count({});
-    console.log(pokemons);
-    //if (!pokemons) await load_pokemons();
+    if (!pokemons) await load_pokemons();
   } catch (e: any) {
     console.log(e);
   }
