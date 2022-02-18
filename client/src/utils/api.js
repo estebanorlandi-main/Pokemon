@@ -11,5 +11,4 @@ export const getPokemons = async (page, type) => {
   return data;
 };
 
-export const getDetails = (id) =>
-  axios(`https://pokeapi.co/api/v2/pokemon/${id}`);
+export const getDetails = (id) => axios(`${REACT_APP_API_URL}/pokemon/${id}`);

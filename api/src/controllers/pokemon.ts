@@ -50,7 +50,7 @@ export default {
     const { skip, limit } = paginate(0);
 
     const query = ObjectId.isValid(name) ? { _id: name } : { name };
-    const pokemon = await PokemonModel.find(query).skip(skip).limit(limit);
+    const pokemon = await PokemonModel.findOne(query).skip(skip).limit(limit);
 
     res.json(pokemon);
   },

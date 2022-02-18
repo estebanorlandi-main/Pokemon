@@ -75,125 +75,71 @@
 .bg-grass {
   background: linear-gradient(45deg, #489820, #88e8b0);
 }
-.bg-grass img {
-  filter: drop-shadow(0 0.5rem 0.25rem #48982077);
-}
 
 .bg-fire {
   background: linear-gradient(45deg, var(--hex-fire), #f08010);
-}
-.bg-fire img {
-  filter: drop-shadow(0 0.5rem 0.25rem #d0601077);
 }
 
 .bg-water {
   background: linear-gradient(45deg, #6890f0, #88e0f0);
 }
-.bg-water img {
-  filter: drop-shadow(0 0.5rem 0.25rem #6890f077);
-}
 
 .bg-bug {
   background: linear-gradient(45deg, #a8b820, #f8f840);
-}
-.bg-bug img {
-  filter: drop-shadow(0 0.5rem 0.25rem #a8b82077);
 }
 
 .bg-normal {
   background: linear-gradient(45deg, #a8a878, #f8f8c8);
 }
-.bg-normal img {
-  filter: drop-shadow(0 0.5rem 0.25rem #a8a87877);
-}
 
 .bg-poison {
   background: linear-gradient(45deg, #a040a0, #e0a0e0);
-}
-.bg-poison img {
-  filter: drop-shadow(0 0.5rem 0.25rem #a040a077);
 }
 
 .bg-electric {
   background: linear-gradient(45deg, #f8e030, #f8e0a0);
 }
-.bg-electric img {
-  filter: drop-shadow(0 0.5rem 0.25rem #f8d01077);
-}
 
 .bg-ground {
   background: linear-gradient(45deg, #e0c068, #f0d098);
-}
-.bg-ground img {
-  filter: drop-shadow(0 0.5rem 0.25rem #e0c06877);
 }
 
 .bg-fairy {
   background: linear-gradient(45deg, #ee99ac, #fec9cc);
 }
-.bg-fairy img {
-  filter: drop-shadow(0 0.5rem 0.25rem #ee99ac77);
-}
 
 .bg-fighting {
   background: linear-gradient(45deg, #c03028, #f06068);
-}
-.bg-fighting img {
-  filter: drop-shadow(0 0.5rem 0.25rem #c0302877);
 }
 
 .bg-psychic {
   background: linear-gradient(45deg, #f85888, #f888b8);
 }
-.bg-psychic img {
-  filter: drop-shadow(0 0.5rem 0.25rem #f8588877);
-}
 
 .bg-rock {
   background: linear-gradient(45deg, #b8a038, #e8d068);
-}
-.bg-rock img {
-  filter: drop-shadow(0 0.5rem 0.25rem #a8902877);
 }
 
 .bg-ghost {
   background: linear-gradient(45deg, #705898, #b078b8);
 }
-.bg-ghost img {
-  filter: drop-shadow(0 0.5rem 0.25rem #70589877);
-}
 
 .bg-ice {
   background: linear-gradient(45deg, #88c8c8, #c8f8f8);
-}
-.bg-ice img {
-  filter: drop-shadow(0 0.5rem 0.25rem #78b8b877);
 }
 
 .bg-dragon {
   background: linear-gradient(45deg, #7038f8, #a068f8);
 }
-.bg-dragon img {
-  filter: drop-shadow(0 0.5rem 0.25rem #7038f877);
-}
 
 .bg-steel {
   background: linear-gradient(45deg, var(--hex-steel), #9f9dab);
-}
-.bg-steel img {
-  filter: drop-shadow(0 0.5rem 0.25rem #48982077);
 }
 
 .bg-flying {
   background: linear-gradient(45deg, var(--hex-flying), #9fbbfc);
 }
-.bg-flying img {
-  filter: drop-shadow(0 0.5rem 0.25rem #48982077);
-}
 
 .bg-dark {
   background: linear-gradient(45deg, var(--hex-dark), #7e6c5e);
-}
-.bg-dark img {
-  filter: drop-shadow(0 0.5rem 0.25rem var(--hex-dark));
 }
