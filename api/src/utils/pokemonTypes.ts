@@ -13,8 +13,12 @@ export interface PokemonType {
 }
 
 export interface Pokemon {
-  name: string;
+  base_experience: number;
+  height: number;
   id: number;
+  name: string;
+  weight: number;
+
   types: string[];
   stats: PokemonStat[];
 }

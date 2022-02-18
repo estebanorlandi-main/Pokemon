@@ -1,5 +1,7 @@
 import { Request, Response, Router } from "express";
-import pokemonRoutes from "./pokemons";
+
+import pokemonsRoutes from "./pokemons";
+import pokemonRoutes from "./pokemon";
 
 const router = Router();
 
@@ -23,6 +25,7 @@ router.get("/", (req: Request, res: Response) => {
   });
 });
 
-router.use("/pokemons", pokemonRoutes);
+router.use("/pokemons", pokemonsRoutes);
+router.use("/pokemon", pokemonRoutes);
 
 export default router;

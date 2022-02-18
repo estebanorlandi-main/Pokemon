@@ -4,6 +4,10 @@ import { Pokemon } from "../utils/pokemonTypes";
 const PokemonSchema: Schema = new Schema<Pokemon>({
   name: { type: String, required: true },
   id: { type: Number, required: true },
+  base_experience: { type: Number, required: true },
+  height: { type: Number, required: true },
+  weight: { type: Number, required: true },
+
   stats: [
     {
       base: String,

@@ -11,6 +11,9 @@ const save_pokemon = async (pokemon: Pokemon) => {
     name: pokemon.name,
     types: pokemon.types,
     stats: pokemon.stats,
+    height: pokemon.height,
+    base_experience: pokemon.base_experience,
+    weight: pokemon.weight,
   });
 
   await new_pokemon.save();
@@ -30,6 +33,9 @@ export const load_pokemons = async () => {
           types: [],
           id: pokemon.id,
           name: pokemon.name,
+          base_experience: pokemon.base_experience,
+          height: pokemon.height,
+          weight: pokemon.weight,
         };
 
         pokemon.stats?.map(({ base_stat, stat }: PokeapiStats) =>

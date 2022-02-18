@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { ObjectId } from "mongodb";
 import PokemonModel from "../models/Pokemon";
 import { Pokemon } from "../utils/pokemonTypes";
 
@@ -39,9 +40,18 @@ export default {
         success: true,
       });
     } catch (e: any) {
-      console.log({ ...e });
       const { name, message } = e;
       return res.status(404).json({ name, message, success: false });
     }
+  },
+
+  getPokemon: async function (req: Request, res: Response) {
+    const { name } = req.params;
+    const { skip, limit } = paginate(0);
+
+    const query = ObjectId.isValid(name) ? { _id: name } : { name };
+    const pokemon = await PokemonModel.find(query).skip(skip).limit(limit);
+
+    res.json(pokemon);
   },
 };
