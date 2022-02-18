@@ -12,15 +12,13 @@ const initialState = {
 function pokemonReducer(state = initialState, action) {
   switch (action.type) {
     case GET_POKEMONS:
-      const { results } = action.payload;
+      const { results, next, prev } = action.payload;
 
       return {
         ...state,
         pokemons: results,
-        total: 0,
-        total_pages: 0,
-        next: null,
-        prev: null,
+        next,
+        prev,
       };
 
     case GET_DETAILS_POKEMONS:

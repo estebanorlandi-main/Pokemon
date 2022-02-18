@@ -10,15 +10,28 @@ export function HomeType() {
   const params = useParams();
   const { type } = params;
 
-  const { pokemons } = useSelector((state) => state.pokemons);
+  const { pokemons, next, prev } = useSelector((state) => state.pokemons);
 
   useEffect(() => {
     dispatch(fetchPokemons(0, type));
     return () => dispatch(removePokemons());
   }, [dispatch, type]);
 
+  const nextPage = () => {
+    if (!next) return;
+    dispatch(removePokemons());
+    dispatch(fetchPokemons(next));
+  };
+  const prevPage = () => {
+    if (!prev) return;
+    dispatch(removePokemons());
+    dispatch(fetchPokemons(prev));
+  };
+
   return (
     <div>
+      <button onClick={prevPage}>Previous</button>
+      <button onClick={nextPage}>Next</button>
       <PokemonList pokemons={pokemons} />
     </div>
   );

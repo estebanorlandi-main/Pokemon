@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { ObjectId } from "mongodb";
 import PokemonModel from "../models/Pokemon";
-import { Pokemon } from "../utils/pokemonTypes";
 
 const options = {
   perPage: 20,
@@ -27,6 +26,7 @@ export default {
     try {
       const { type } = req.query;
       const page = req.params.page ? Number(req.params.page) : 0;
+      const self_url = req.protocol + "://" + req.get("host");
 
       const { skip, limit } = paginate(page);
 
@@ -38,6 +38,11 @@ export default {
         results: pokemons,
         count: pokemons.length,
         success: true,
+        prev:
+          page && page - 1 >= 0
+            ? self_url + `/pokemons/${page - 1}${type ? `?type=${type}` : ""}`
+            : null,
+        next: self_url + `/pokemons/${page + 1}${type ? `?type=${type}` : ""}`,
       });
     } catch (e: any) {
       const { name, message } = e;
@@ -50,7 +55,7 @@ export default {
     const { skip, limit } = paginate(0);
 
     const query = ObjectId.isValid(name) ? { _id: name } : { name };
-    const pokemon = await PokemonModel.findOne(query).skip(skip).limit(limit);
+    const pokemon = await PokemonModel.findOne(query);
 
     res.json(pokemon);
   },

@@ -14,12 +14,6 @@ export function Home() {
   return (
     <main>
       <div className={styles.container}>
-        {/*<div className={styles.pageHandler}>
-          <PrimaryButton Icon={BiChevronLeft} onClick={prevPage} />
-          {page}
-          <PrimaryButton Icon={BiChevronRight} onClick={nextPage} />
-        </div>*/}
-
         <Outlet />
       </div>
     </main>

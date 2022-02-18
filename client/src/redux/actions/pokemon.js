@@ -9,10 +9,12 @@ export const fetchPokemons = (page, type) => {
   return async (dispatch) => {
     const data = await getPokemons(page, type);
 
-    const { results } = data;
+    const { results, next, prev } = data;
 
     const payload = {
-      results: results,
+      results,
+      next,
+      prev,
     };
 
     dispatch({ type: GET_POKEMONS, payload });

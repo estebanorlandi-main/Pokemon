@@ -7,7 +7,7 @@ export const getPokemons = async (page, type) => {
 
   const url = REACT_APP_API_URL + `/pokemons${typeQuery}`;
 
-  const { data } = await axios(url);
+  const { data } = await axios(page || url);
   return data;
 };
 
