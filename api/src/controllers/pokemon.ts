@@ -48,7 +48,9 @@ export default {
         prev = null;
       }
 
-      const totalPokemons = await PokemonModel.find({ types: type });
+      const totalPokemons = await PokemonModel.find(
+        type ? { types: type } : {}
+      );
 
       if ((page + 1) * options.perPage <= totalPokemons.length) {
         next += self_url + `/pokemons/${page + 1}`;

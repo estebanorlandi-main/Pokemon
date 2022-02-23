@@ -8,6 +8,7 @@ import "./App.css";
 import { Navbar } from "components/Navbar/Navbar";
 import { HomeType } from "pages/Home/HomeType";
 import { HomeDefault } from "pages/Home/HomeDefault";
+import { Error404 } from "pages/404/404";
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
           <Route path="/home/" element={<HomeDefault />} />
           <Route path="/home/:type" element={<HomeType />} />
         </Route>
-        <Route path="/pokemon/:id" element={<Pokemon />} />
+        <Route path="/pokemon/:id" element={<Pokemon />}></Route>
+        <Route path="*" element={<Error404 />}></Route>
       </Routes>
     </div>
   );

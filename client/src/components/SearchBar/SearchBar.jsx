@@ -25,7 +25,7 @@ export const SearchBar = ({ onSearch }) => {
         placeholder="Search your Pokemon!"
       />
       <button type="submit">
-        <Pokeball />
+        <Pokeball size="xsm" />
       </button>
     </form>
   );
