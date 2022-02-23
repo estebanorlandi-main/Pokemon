@@ -8,7 +8,7 @@ const options = {
 
 const paginate = (page: number) => ({
   skip: page ? page * options.perPage : 0,
-  limit: page ? page * options.perPage : options.perPage,
+  limit: options.perPage,
 });
 
 const query = async (find: object, skip: number, limit: number) => {
@@ -26,7 +26,7 @@ export default {
     try {
       const { type } = req.query;
       const page = req.params.page ? Number(req.params.page) : 0;
-      const self_url = req.protocol + "://" + req.get("host");
+      let self_url = req.protocol + "://" + req.get("host");
 
       const { skip, limit } = paginate(page);
 
@@ -34,15 +34,33 @@ export default {
 
       if (!pokemons.length) throw new Error("Pokemons not found");
 
+      let prev: string | null = "";
+      let next: string | null = "";
+
+      if (page - 1 >= 0) {
+        prev += self_url + `/pokemons/${page - 1}`;
+        if (type) prev += "?type=" + type;
+      } else {
+        prev = null;
+      }
+
+      const totalPokemons = await PokemonModel.find({ types: type });
+
+      if ((page + 1) * options.perPage <= totalPokemons.length) {
+        next += self_url + `/pokemons/${page + 1}`;
+        if (type) next += "?type=" + type;
+      } else {
+        next = null;
+      }
+      console.log(next);
+
       return res.json({
-        results: pokemons,
         count: pokemons.length,
+        next,
+        page,
+        prev,
+        results: pokemons,
         success: true,
-        prev:
-          page && page - 1 >= 0
-            ? self_url + `/pokemons/${page - 1}${type ? `?type=${type}` : ""}`
-            : null,
-        next: self_url + `/pokemons/${page + 1}${type ? `?type=${type}` : ""}`,
       });
     } catch (e: any) {
       const { name, message } = e;
