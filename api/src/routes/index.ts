@@ -7,6 +7,7 @@ const router = Router();
 
 router.get("/", (req: Request, res: Response) => {
   res.json({
+    req: req.protocol,
     home: {
       path: "/",
     },
