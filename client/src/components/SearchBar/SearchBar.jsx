@@ -5,7 +5,6 @@ import styles from "./SearchBar.module.css";
 
 export const SearchBar = ({ onSearch }) => {
   const [inputs, setInputs] = useState({ search: "" });
-  const [errors, setErrors] = useState({ search: "" });
 
   const onSubmit = (e) => {
     e.preventDefault();

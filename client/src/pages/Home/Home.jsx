@@ -21,7 +21,7 @@ export function Home() {
   useEffect(() => {
     if (type) navigate(`/home/${type}`);
     else navigate("/home");
-  }, [type]);
+  }, [type, navigate]);
 
   const nextPage = () => {
     if (!next) return;

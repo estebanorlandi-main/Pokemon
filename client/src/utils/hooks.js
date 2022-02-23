@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { fetchPokemons, removePokemons } from "redux/actions/pokemon";
 
 export const useQuery = () => {
   const [loading, setLoading] = useState(true);
