@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { ObjectId } from "mongodb";
+import { NODE_ENV } from "../config";
 import PokemonModel from "../models/Pokemon";
 
 const options = {
@@ -26,7 +27,10 @@ export default {
     try {
       const { type } = req.query;
       const page = req.params.page ? Number(req.params.page) : 0;
-      let self_url = req.protocol + "://" + req.get("host");
+      let self_url =
+        (NODE_ENV !== "production" ? "http" : "https") +
+        "://" +
+        req.get("host");
 
       const { skip, limit } = paginate(page);
 
