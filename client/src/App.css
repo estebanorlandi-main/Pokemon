@@ -1,7 +1,6 @@
 .App {
   --hex-grass: #78c850;
-  --hex-fire: #f08030;
-  --hex-fire: #b03031;
+  --hex-fire: #d08030;
   --hex-water: #6890f0;
   --hex-bug: #a8b820;
   --hex-normal: #a8a878;
@@ -18,128 +17,57 @@
   --hex-steel: #bfbdcb;
   --hex-flying: #6f8bdc;
   --hex-dark: #3e3e3e;
+  background-color: #1e1e1e;
 }
 
 .c-grass {
-  background: #78c850;
+  background: var(--hex-grass);
 }
 .c-fire {
-  background: #f08030;
+  background: var(--hex-fire);
 }
 .c-water {
-  background: #6890f0;
+  background: var(--hex-water);
 }
 .c-bug {
-  background: #a8b820;
+  background: var(--hex-bug);
 }
 .c-normal {
-  background: #a8a878;
+  background: var(--hex-normal);
 }
 .c-poison {
-  background: #a040a0;
+  background: var(--hex-poison);
 }
 .c-electric {
-  background: #f8d030;
+  background: var(--hex-electric);
 }
 .c-ground {
-  background: #e0c068;
+  background: var(--hex-ground);
 }
 .c-fairy {
-  background: #ee99ac;
+  background: var(--hex-fairy);
 }
 .c-fighting {
-  background: #c03028;
+  background: var(--hex-fighting);
 }
 .c-psychic {
-  background: #f85888;
+  background: var(--hex-psychic);
 }
 .c-rock {
-  background: #b8a038;
+  background: var(--hex-rock);
 }
 .c-ghost {
-  background: #705898;
+  background: var(--hex-ghost);
 }
 .c-ice {
-  background: #98d8d8;
+  background: var(--hex-ice);
 }
 .c-dragon {
-  background: #7038f8;
+  background: var(--hex-dragon);
 }
 .c-steel {
   background: var(--hex-steel);
 }
 .c-dark {
   background: var(--hex-dark);
-}
-
-.bg-grass {
-  background: linear-gradient(45deg, #489820, #88e8b0);
-}
-
-.bg-fire {
-  background: linear-gradient(45deg, var(--hex-fire), #f08010);
-}
-
-.bg-water {
-  background: linear-gradient(45deg, #6890f0, #88e0f0);
-}
-
-.bg-bug {
-  background: linear-gradient(45deg, #a8b820, #f8f840);
-}
-
-.bg-normal {
-  background: linear-gradient(45deg, #a8a878, #f8f8c8);
-}
-
-.bg-poison {
-  background: linear-gradient(45deg, #a040a0, #e0a0e0);
-}
-
-.bg-electric {
-  background: linear-gradient(45deg, #f8e030, #f8e0a0);
-}
-
-.bg-ground {
-  background: linear-gradient(45deg, #e0c068, #f0d098);
-}
-
-.bg-fairy {
-  background: linear-gradient(45deg, #ee99ac, #fec9cc);
-}
-
-.bg-fighting {
-  background: linear-gradient(45deg, #c03028, #f06068);
-}
-
-.bg-psychic {
-  background: linear-gradient(45deg, #f85888, #f888b8);
-}
-
-.bg-rock {
-  background: linear-gradient(45deg, #b8a038, #e8d068);
-}
-
-.bg-ghost {
-  background: linear-gradient(45deg, #705898, #b078b8);
-}
-
-.bg-ice {
-  background: linear-gradient(45deg, #88c8c8, #c8f8f8);
-}
-
-.bg-dragon {
-  background: linear-gradient(45deg, #7038f8, #a068f8);
-}
-
-.bg-steel {
-  background: linear-gradient(45deg, var(--hex-steel), #9f9dab);
-}
-
-.bg-flying {
-  background: linear-gradient(45deg, var(--hex-flying), #9fbbfc);
-}
-
-.bg-dark {
-  background: linear-gradient(45deg, var(--hex-dark), #7e6c5e);
 }

@@ -1,0 +1,33 @@
+.pokeball {
+  border-radius: 100%;
+  overflow: hidden;
+  width: 2rem;
+  height: 2rem;
+}
+
+.pokeball {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.center {
+  box-sizing: content-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 0.5rem;
+  width: 0.5rem;
+  border: 0.2rem solid var(--color2);
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color);
+}
+
+.top,
+.bottom {
+  width: 100%;
+  height: 0.89rem;
+  background: var(--color);
+}

@@ -1,27 +1,22 @@
-import ListTypes from "components/ListTypes/ListTypes";
-import { typesArray } from "utils";
+import { Link } from "react-router-dom";
+import { BiRightArrowAlt } from "react-icons/bi";
 
 import styles from "./Landing.module.css";
-import { useNavigate } from "react-router";
 
 function Landing() {
-  const navigate = useNavigate();
-
-  const handleType = (name) => navigate(`/home/${name}`);
-
   return (
     <main>
-      <div className={styles.container}>
-        <h1 className={styles.title}>Select your pokemon type</h1>
-        <ul className={styles.types}>
-          <ListTypes
-            onClick={handleType}
-            types={typesArray}
-            size={1.5}
-            className={styles.type}
-          />
-        </ul>
-      </div>
+      <section className={styles.main}>
+        <div className={styles.header}>
+          <h3 className={styles.subtitle}>Catch 'em all!</h3>
+          <h1 className={styles.title}>Pokemon</h1>
+        </div>
+
+        <Link to="/home" className={styles.toHome}>
+          Home
+          <BiRightArrowAlt className={styles.icon} />
+        </Link>
+      </section>
     </main>
   );
 }

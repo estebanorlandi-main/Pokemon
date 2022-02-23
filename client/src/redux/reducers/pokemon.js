@@ -7,15 +7,19 @@ import {
 
 const initialState = {
   pokemons: [],
+  next: null,
+  prev: null,
+  page: 0,
 };
 
 function pokemonReducer(state = initialState, action) {
   switch (action.type) {
     case GET_POKEMONS:
-      const { results, next, prev } = action.payload;
+      const { results, next, page, prev } = action.payload;
 
       return {
         ...state,
+        page,
         pokemons: results,
         next,
         prev,

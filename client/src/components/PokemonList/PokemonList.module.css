@@ -1,5 +1,6 @@
 .container {
   display: grid;
+  margin: 1rem 0 0 0;
   grid-template-columns: 1fr;
   gap: 1rem;
 }
@@ -36,5 +37,16 @@
 @media screen and (min-width: 70rem) {
   .container {
     grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media screen and (min-width: 80rem) {
+  .container {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+@media screen and (min-width: 90rem) {
+  .container {
+    grid-template-columns: repeat(8, 1fr);
   }
 }

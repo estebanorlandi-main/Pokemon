@@ -1,12 +1,12 @@
 import styles from "./PrimaryButton.module.css";
 
-function PrimaryButton({ text, Icon, onClick }) {
+function PageButton({ text, Icon, onClick }) {
   return (
     <button onClick={onClick} className={styles.btn}>
-      {Icon ? <Icon /> : null}
+      {Icon ? <Icon className={styles.icon} /> : null}
       {text}
     </button>
   );
 }
 
-export default PrimaryButton;
+export default PageButton;

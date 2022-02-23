@@ -1,13 +1,28 @@
 .container {
-  padding: 4rem 5vw 0 5vw;
+  padding: 2vh 5vw 5vh 5vw;
+  min-height: 100vh;
 }
 
-.pageHandler {
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.select_container {
+  min-width: max-content;
+  width: 10rem;
+}
+
+.pageButtons {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin: 0 0 0.25rem 0;
+}
+
+.pageNumber {
+  color: #fff;
 }
 
 .total {

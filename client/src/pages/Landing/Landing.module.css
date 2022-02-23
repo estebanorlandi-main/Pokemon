@@ -1,33 +1,52 @@
-.container {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
+.main {
   height: 100vh;
-  overflow: hidden;
-  gap: 3rem;
-  padding: 10vw;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10vh 5vw;
+  background: linear-gradient(#0003, #000),
+    url("assets/images/branden-skeli-bRojCEo0uow-unsplash.jpg") center;
+  background-size: cover;
+}
+
+.header {
+  color: #fff;
+  display: flex;
+  flex-flow: column;
 }
 
 .title {
-  font-size: 1.25rem;
-  text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
 }
 
-.types {
-  list-style: none;
+.toHome {
+  position: relative;
+  z-index: 2;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  gap: 1rem;
-  cursor: pointer;
-}
-.type {
-  margin: 0;
+  align-items: center;
+  gap: 0.5rem;
+  width: max-content;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
   transition: all 0.25s;
 }
 
-.type:hover {
-  transform: scale(150%);
+.toHome::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: #fff;
+  transition: all 0.25s;
+}
+
+@media screen and (min-width: 40rem) {
 }

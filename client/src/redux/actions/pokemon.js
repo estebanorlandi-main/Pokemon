@@ -7,15 +7,7 @@ export const REMOVE_POKEMONS = "REMOVE_POKEMONS";
 
 export const fetchPokemons = (page, type) => {
   return async (dispatch) => {
-    const data = await getPokemons(page, type);
-
-    const { results, next, prev } = data;
-
-    const payload = {
-      results,
-      next,
-      prev,
-    };
+    const payload = await getPokemons(page, type);
 
     dispatch({ type: GET_POKEMONS, payload });
   };

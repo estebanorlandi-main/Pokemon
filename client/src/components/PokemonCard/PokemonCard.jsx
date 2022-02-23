@@ -8,11 +8,13 @@ import { getPokemonImage } from "utils";
 function PokemonCard({ id, name, types }) {
   const pokemonImg = getPokemonImage(id);
   return (
-    <Link className={styles.pokemon_link} to={`/pokemon/${name}`}>
-      <div className={`${styles.pokemon} bg-${types[0]}`}>
-        <Image className={styles.pokemon_image} src={pokemonImg} alt={name} />
+    <Link className={styles.pokemon} to={`/pokemon/${name}`}>
+      <div className={styles.pokemon_container}>
+        <div className={`${styles.image_container} c-${types[0]}`}>
+          <Image className={styles.pokemon_image} src={pokemonImg} alt={name} />
+        </div>
 
-        <div className={styles.body}>
+        <div className={styles.pokemon_body}>
           <h3 className={styles.pokemon_name}>{name}</h3>
           <ul className={styles.pokemon_types}>
             <ListTypes types={types} />
