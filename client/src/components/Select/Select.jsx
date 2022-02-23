@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { typesArray } from "utils";
+import { typesArray, getIconComponent } from "utils";
+import { BiChevronDown } from "react-icons/bi";
 
 import styles from "./Select.module.css";
 
@@ -21,34 +22,34 @@ export function Select({ onChange }) {
   return (
     <div className={styles.container}>
       <div onClick={handleState} className={styles.selected}>
-        {selected}
+        {selected} <BiChevronDown />
       </div>
-      {selected ? (
-        <ul className={`${styles.options} ${show ? styles.show : ""}`}>
-          {DEFAULT !== selected ? (
-            <li key={DEFAULT}>
+      <ul className={`${styles.options} ${show ? styles.show : ""}`}>
+        {DEFAULT !== selected ? (
+          <li key={DEFAULT}>
+            <button
+              className={styles.btn}
+              onClick={() => changeSelected(DEFAULT)}
+            >
+              {DEFAULT}
+            </button>
+          </li>
+        ) : null}
+
+        {typesArray.map((type, i) => {
+          const Icon = getIconComponent(type);
+          return type !== selected ? (
+            <li key={type + i}>
               <button
                 className={styles.btn}
-                onClick={() => changeSelected(DEFAULT)}
+                onClick={() => changeSelected(type)}
               >
-                {DEFAULT}
+                <Icon /> {type}
               </button>
             </li>
-          ) : null}
-          {typesArray.map((type, i) =>
-            type !== selected ? (
-              <li key={type + i}>
-                <button
-                  className={styles.btn}
-                  onClick={() => changeSelected(type)}
-                >
-                  {type}
-                </button>
-              </li>
-            ) : null
-          )}
-        </ul>
-      ) : null}
+          ) : null;
+        })}
+      </ul>
     </div>
   );
 }

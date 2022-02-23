@@ -43,15 +43,24 @@ export function Home() {
             <Select onChange={(type) => setType(type)} />
           </div>
 
-          <div className={styles.pageButtons}>
-            <PageButton onClick={prevPage} Icon={BiChevronLeft} />
-            <span className={styles.pageNumber}>{page + 1}</span>
-            <PageButton onClick={nextPage} Icon={BiChevronRight} />
+          <div className={styles.search_container}>
+            <SearchBar />
           </div>
-
-          <SearchBar />
         </div>
+
+        <div className={styles.pageButtons}>
+          <PageButton onClick={prevPage} Icon={BiChevronLeft} />
+          <span className={styles.pageNumber}>{page + 1}</span>
+          <PageButton onClick={nextPage} Icon={BiChevronRight} />
+        </div>
+
         <Outlet />
+
+        <div className={styles.pageButtons}>
+          <PageButton onClick={prevPage} Icon={BiChevronLeft} />
+          <span className={styles.pageNumber}>{page + 1}</span>
+          <PageButton onClick={nextPage} Icon={BiChevronRight} />
+        </div>
       </div>
     </main>
   );

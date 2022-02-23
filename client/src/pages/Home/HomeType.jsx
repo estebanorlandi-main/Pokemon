@@ -17,8 +17,6 @@ export function HomeType() {
     return () => dispatch(removePokemons());
   }, [dispatch, type]);
 
-  
-
   return (
     <div>
       <PokemonList pokemons={pokemons} />

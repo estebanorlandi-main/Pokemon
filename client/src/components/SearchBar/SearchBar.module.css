@@ -4,12 +4,14 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  width: 25%;
+
   min-width: max-content;
-  height: 3.5rem;
+  width: 100%;
   min-height: max-content;
+
   background-color: #2e2e2e;
-  border-radius: 0.25rem;
+  border: 2px solid #333;
+  border-radius: 0.15rem;
   overflow: hidden;
 }
 
@@ -22,7 +24,7 @@
   background: #2e2e2e;
   color: #fff;
   outline: none;
-  padding: 0 1rem;
+  padding: 1rem;
 }
 
 .container button {
@@ -39,4 +41,14 @@
 .container button:focus {
   box-shadow: 0 0.5rem 1.25rem #f537;
   transform: translateY(-5px);
+}
+
+@media screen and (min-width: 40rem) {
+  .container {
+    height: 2.5rem;
+  }
+
+  .container input {
+    padding: 0.75rem 1rem;
+  }
 }

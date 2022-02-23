@@ -5,13 +5,16 @@
 
 .filters {
   display: flex;
+  flex-flow: column-reverse wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 1rem;
 }
 
-.select_container {
+.select_container,
+.search_container {
   min-width: max-content;
-  width: 10rem;
+  width: 100%;
 }
 
 .pageButtons {
@@ -25,9 +28,17 @@
   color: #fff;
 }
 
-.total {
-  display: block;
-  font-size: 0.9rem;
-  color: #888;
-  margin: 0 0 0.25rem 0;
+@media screen and (min-width: 40rem) {
+  .filters {
+    flex-flow: row;
+    height: 3rem;
+    background: red;
+  }
+
+  .select_container {
+    max-width: 15rem;
+  }
+  .search_container {
+    max-width: 25rem;
+  }
 }

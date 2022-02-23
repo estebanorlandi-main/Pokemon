@@ -13,7 +13,6 @@ import { Error404 } from "pages/404/404";
 function App() {
   return (
     <div className="App">
-      <Navbar />
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route path="/home" element={<Home />}>
