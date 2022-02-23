@@ -1,10 +1,12 @@
 .loader {
-  --color: #252525;
+  --color: #fff;
+  --color2: #1e1e1e;
   display: flex;
   flex-flow: column;
   align-items: center;
   gap: 0.5rem;
   font-weight: 700;
+  height: 100%;
   color: var(--color);
 }
 
