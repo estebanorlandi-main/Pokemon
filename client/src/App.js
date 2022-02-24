@@ -5,7 +5,6 @@ import Home from "pages/Home";
 import Pokemon from "pages/Pokemon/Pokemon";
 
 import "./App.css";
-import { Navbar } from "components/Navbar/Navbar";
 import { HomeType } from "pages/Home/HomeType";
 import { HomeDefault } from "pages/Home/HomeDefault";
 import { Error404 } from "pages/404/404";
