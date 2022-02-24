@@ -14,7 +14,7 @@ export function HomeType() {
 
   useEffect(() => {
     dispatch(fetchPokemons({ page: 0, type, search: filters?.search }));
-  }, [filters]);
+  }, [dispatch, filters, type]);
 
   useEffect(() => {
     dispatch(fetchPokemons({ page: 0, type }));
