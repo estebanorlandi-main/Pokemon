@@ -5,6 +5,17 @@ import { PokeapiStats, PokeapiType } from "./pokeapiTypes";
 import { Pokemon } from "./pokemonTypes";
 import { pokeapi } from "./urls";
 
+interface GetAll {
+  find: object;
+  skip: number;
+  limit: number;
+  options: object;
+}
+
+export const getAll = async ({ find, options, skip, limit }: GetAll) => {
+  return await PokemonModel.find(find, options).skip(skip).limit(limit);
+};
+
 const save_pokemon = async (pokemon: Pokemon) => {
   const new_pokemon = new PokemonModel({
     id: pokemon.id,

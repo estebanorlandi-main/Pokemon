@@ -8,7 +8,7 @@ export const SearchBar = ({ onSearch }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    //onSearch(inputs);
+    onSearch(inputs.search);
   };
 
   const onChange = ({ target: { name, value } }) => {

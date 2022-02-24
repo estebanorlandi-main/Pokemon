@@ -10,10 +10,14 @@ export function HomeType() {
   const params = useParams();
   const { type } = params;
 
-  const { pokemons } = useSelector((state) => state.pokemons);
+  const { pokemons, filters } = useSelector((state) => state.pokemons);
 
   useEffect(() => {
-    dispatch(fetchPokemons(0, type));
+    dispatch(fetchPokemons({ page: 0, type, search: filters?.search }));
+  }, [filters]);
+
+  useEffect(() => {
+    dispatch(fetchPokemons({ page: 0, type }));
     return () => dispatch(removePokemons());
   }, [dispatch, type]);
 

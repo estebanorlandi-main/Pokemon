@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { ObjectId } from "mongodb";
 import { NODE_ENV } from "../config";
 import PokemonModel from "../models/Pokemon";
+import { getAll } from "../utils/pokemon";
 
 const options = {
   perPage: 20,
@@ -12,21 +13,12 @@ const paginate = (page: number) => ({
   limit: options.perPage,
 });
 
-const query = async (find: object, skip: number, limit: number) => {
-  const options = {
-    name: 1,
-    id: 1,
-    types: 1,
-  };
-  const data = await PokemonModel.find(find, options).skip(skip).limit(limit);
-  return data;
-};
-
 export default {
   getPokemons: async function (req: Request, res: Response) {
     try {
-      const { type } = req.query;
+      const { type, search } = req.query;
       const page = req.params.page ? Number(req.params.page) : 0;
+
       let self_url =
         (NODE_ENV !== "production" ? "http" : "https") +
         "://" +
@@ -34,7 +26,20 @@ export default {
 
       const { skip, limit } = paginate(page);
 
-      const pokemons = await query(type ? { types: type } : {}, skip, limit);
+      const query: {
+        types?: string;
+        name?: { $regex: string; $options?: string };
+      } = {};
+
+      if (type) query.types = String(type);
+      if (search) query.name = { $regex: String(search), $options: "i" };
+
+      const pokemons = await getAll({
+        find: query,
+        options: { name: 1, id: 1, types: 1 },
+        skip,
+        limit,
+      });
 
       if (!pokemons.length) throw new Error("Pokemons not found");
 
@@ -48,9 +53,7 @@ export default {
         prev = null;
       }
 
-      const totalPokemons = await PokemonModel.find(
-        type ? { types: type } : {}
-      );
+      const totalPokemons = await PokemonModel.find({});
 
       if ((page + 1) * options.perPage <= totalPokemons.length) {
         next += self_url + `/pokemons/${page + 1}`;
@@ -58,7 +61,6 @@ export default {
       } else {
         next = null;
       }
-      console.log(next);
 
       return res.json({
         count: pokemons.length,
@@ -70,7 +72,9 @@ export default {
       });
     } catch (e: any) {
       const { name, message } = e;
-      return res.status(404).json({ name, message, success: false });
+      return res
+        .status(404)
+        .json({ pokemons: [], name, message, success: false });
     }
   },
 

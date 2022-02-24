@@ -1,5 +1,4 @@
 import { Outlet, useNavigate } from "react-router";
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SearchBar } from "components/SearchBar/SearchBar";
 
@@ -7,7 +6,12 @@ import PageButton from "components/Buttons/PrimaryButton";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 import styles from "./Home.module.css";
-import { fetchPokemons, removePokemons } from "redux/actions/pokemon";
+import {
+  fetchPokemons,
+  removePokemons,
+  setSearch,
+  setType,
+} from "redux/actions/pokemon";
 import { Select } from "components/Select/Select";
 
 export function Home() {
@@ -16,23 +20,26 @@ export function Home() {
 
   const { next, page, prev } = useSelector((state) => state.pokemons);
 
-  const [type, setType] = useState("");
-
-  useEffect(() => {
-    if (type) navigate(`/home/${type}`);
-    else navigate("/home");
-  }, [type, navigate]);
-
   const nextPage = () => {
     if (!next) return;
     dispatch(removePokemons());
-    dispatch(fetchPokemons(next));
+    dispatch(fetchPokemons({ page: next }));
   };
 
   const prevPage = () => {
     if (!prev) return;
     dispatch(removePokemons());
-    dispatch(fetchPokemons(prev));
+    dispatch(fetchPokemons({ page: prev }));
+  };
+
+  const handleType = (type) => {
+    if (!type) return navigate(`/home`);
+    dispatch(setType(type));
+    navigate(`/home/${type}`);
+  };
+
+  const handleName = (name) => {
+    dispatch(setSearch(name));
   };
 
   return (
@@ -40,11 +47,11 @@ export function Home() {
       <div className={styles.container}>
         <div className={styles.filters}>
           <div className={styles.select_container}>
-            <Select onChange={(type) => setType(type)} />
+            <Select onChange={handleType} />
           </div>
 
           <div className={styles.search_container}>
-            <SearchBar />
+            <SearchBar onSearch={handleName} />
           </div>
         </div>
 

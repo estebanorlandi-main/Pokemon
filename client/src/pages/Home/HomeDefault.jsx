@@ -6,10 +6,14 @@ import { fetchPokemons, removePokemons } from "redux/actions/pokemon";
 export function HomeDefault() {
   const dispatch = useDispatch();
 
-  const { pokemons } = useSelector((state) => state.pokemons);
+  const { pokemons, filters } = useSelector((state) => state.pokemons);
 
   useEffect(() => {
-    dispatch(fetchPokemons(0));
+    dispatch(fetchPokemons({ page: 0, search: filters?.search }));
+  }, [dispatch, filters]);
+
+  useEffect(() => {
+    dispatch(fetchPokemons({ page: 0 }));
     return () => dispatch(removePokemons());
   }, [dispatch]);
 

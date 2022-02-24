@@ -3,6 +3,8 @@ import {
   GET_POKEMONS,
   REMOVE_DETAILS_POKEMON,
   REMOVE_POKEMONS,
+  SET_SEARCH,
+  SET_TYPE,
 } from "redux/actions/pokemon";
 
 const initialState = {
@@ -29,6 +31,17 @@ function pokemonReducer(state = initialState, action) {
       return {
         ...state,
         pokemon: action.payload?.data,
+      };
+
+    case SET_SEARCH:
+      return {
+        ...state,
+        filters: { ...state.filters, search: action.payload },
+      };
+    case SET_TYPE:
+      return {
+        ...state,
+        filters: { ...state.filters, type: action.payload, search: "" },
       };
 
     case REMOVE_DETAILS_POKEMON:
