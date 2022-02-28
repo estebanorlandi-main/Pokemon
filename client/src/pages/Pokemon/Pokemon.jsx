@@ -1,14 +1,29 @@
 import { useEffect } from "react";
+import { BiChevronLeft, BiHeart, BiShare, BiShield } from "react-icons/bi";
+import { RiSwordFill } from "react-icons/ri";
+import { MdSpeed } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import { fetchDetails, removeDetails } from "redux/actions/pokemon";
 import { getIconComponent, getPokemonImage } from "utils";
 
 import styles from "./Pokemon.module.css";
 
+const iconSize = 24;
+const stats = {
+  hp: <BiHeart size={iconSize} className={styles.stat_icon} />,
+  defense: <BiShield size={iconSize} className={styles.stat_icon} />,
+  attack: <RiSwordFill size={iconSize} className={styles.stat_icon} />,
+  "special-attack": "SpA",
+  "special-defense": "SpD",
+  speed: <MdSpeed size={iconSize} className={styles.stat_icon} />,
+};
+
 const Pokemon = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { pokemon } = useSelector((state) => state.pokemons);
 
   const params = useParams();
@@ -16,53 +31,97 @@ const Pokemon = () => {
 
   useEffect(() => {
     dispatch(fetchDetails(id));
+    console.clear();
     return () => dispatch(removeDetails());
   }, [dispatch, id]);
 
-  let Icon = null;
-  let bg = null;
-  if (pokemon?.types) Icon = getIconComponent(pokemon?.types[0]?.type?.name);
-  if (pokemon?.types) bg = pokemon?.types[0];
+  useEffect(() => {
+    console.log(pokemon);
+  }, [pokemon]);
+
+  const handlePage = () => navigate(-1);
 
   return (
-    <main>
-      <div className={styles.container + ` bg-${bg}`}>
-        <div className={styles.inline}>
-          <div className={styles.pokemon_info}>
-            <div className={styles.pokemon_data}>
-              <span className={styles.pokemon_id}>#{pokemon?.id}</span>
-              <h1 className={styles.pokemon_name}>
-                {pokemon?.name}
-                {Icon ? <Icon fill="light" className={styles.icon} /> : null}
-              </h1>
-            </div>
+    <main className={styles.container}>
+      <div className={styles.top_bar}>
+        <button onClick={handlePage} className={styles.back_btn}>
+          <BiChevronLeft size={iconSize} />
+        </button>
+        <h3 className={styles.pokemon_id}>#{pokemon?.id}</h3>
+        <button onClick={handlePage} className={styles.back_btn}>
+          <BiShare size={iconSize} />
+        </button>
+      </div>
 
-            <div className={styles.pokemon_stats}>
-              <p className={styles.pokemon_height}>
-                <span className={styles.bold}>Height - </span>
-                {pokemon?.height}
-              </p>
-              <p className={styles.pokemon_weight}>
-                <span className={styles.bold}>Weight - </span>
-                {pokemon?.weight}
-              </p>
-              <p className={styles.pokemon_hp}>
-                <span className={styles.bold}>
-                  {pokemon?.id && pokemon?.stats[0]?.stat?.name} -
-                </span>
-                {pokemon?.id && pokemon?.stats[0]?.base_stat}
-              </p>
-            </div>
-          </div>
+      <figure className={styles.image_container}>
+        {pokemon?.name ? (
+          <img
+            className={styles.pokemon_image}
+            src={getPokemonImage(pokemon?.id)}
+            alt=""
+          />
+        ) : null}
+        <figcaption>
+          <ul className={styles.pokemon_types}>
+            {pokemon?.types
+              ? pokemon.types.map((type, i) => {
+                  const Icon = getIconComponent(type);
+                  return (
+                    <li className={styles.pokemon_type} key={type + i}>
+                      <Icon />
+                      {type}
+                    </li>
+                  );
+                })
+              : undefined}
+          </ul>
+        </figcaption>
+      </figure>
 
-          {pokemon?.name ? (
-            <img
-              className={styles.pokemon_image}
-              src={getPokemonImage(pokemon?.id)}
-              alt=""
-            />
-          ) : null}
-        </div>
+      <div className={styles.body}>
+        <h1 className={styles.pokemon_name}>{pokemon?.name}</h1>
+
+        <section>
+          <h3 className={styles.section_name}>Info</h3>
+          <ul className={styles.info_list}>
+            <li className={styles.info_item}>
+              <div className={styles.info_name}>Height</div>
+              <span className={styles.info_value}>{pokemon?.height}</span>
+            </li>
+            <li className={styles.info_item}>
+              <div className={styles.info_name}>Weight</div>
+              <span className={styles.info_value}>{pokemon?.weight}</span>
+            </li>
+            <li className={styles.info_item}>
+              <div className={styles.info_name}>Base Exp</div>
+              <span className={styles.info_value}>
+                {pokemon?.base_experience}
+              </span>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 className={styles.section_name}>Stats</h3>
+          <ul className={styles.stats_list}>
+            {pokemon?.stats?.length
+              ? pokemon.stats.map(({ name, base }, i) => (
+                  <li
+                    className={styles.stat_item + ` c-${pokemon?.types[0]}`}
+                    key={name + base + i}
+                  >
+                    <div className={styles.stat_name}>{stats[name]}</div>
+                    <span className={styles.stat_value}>{base}</span>
+                  </li>
+                ))
+              : undefined}
+          </ul>
+        </section>
+
+        <section>
+          <h3>Abilities</h3>
+          <p>Under construction!</p>
+        </section>
       </div>
     </main>
   );

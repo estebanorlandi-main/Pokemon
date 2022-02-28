@@ -17,16 +17,9 @@
   width: 100%;
 }
 
-.pageButtons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin: 0.75rem 0;
-}
-
-.pageNumber {
-  color: #fff;
+.pokemons_number {
+  color: #888;
+  font-size: 0.9rem;
 }
 
 @media screen and (min-width: 40rem) {

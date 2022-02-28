@@ -19,7 +19,7 @@ function App() {
           <Route path="/home/:type" element={<HomeType />} />
         </Route>
         <Route path="/pokemon/:id" element={<Pokemon />}></Route>
-        <Route path="*" element={<Error404 />}></Route>
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
   );

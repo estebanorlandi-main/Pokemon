@@ -10,13 +10,11 @@ const encodeQuery = (data) => {
   return encoded.join("&");
 };
 
-export const getPokemons = async (q) => {
+export const getPokemons = async ({ page, ...params }) => {
   try {
-    let query = encodeQuery(q);
-
+    const query = encodeQuery(params);
     const url = REACT_APP_API_URL + `/pokemons${query ? "?" + query : ""}`;
-
-    const { data } = await axios(q.page || url);
+    const { data } = await axios(page || url);
     return data;
   } catch (e) {
     console.log(e);
