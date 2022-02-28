@@ -53,7 +53,7 @@ export default {
         prev = null;
       }
 
-      const totalPokemons = await PokemonModel.find({});
+      const totalPokemons = await PokemonModel.find(query);
 
       if ((page + 1) * options.perPage <= totalPokemons.length) {
         next += self_url + `/pokemons/${page + 1}`;
@@ -64,9 +64,11 @@ export default {
 
       return res.json({
         count: pokemons.length,
+        perPage: options.perPage,
         next,
         page,
         prev,
+        total: totalPokemons.length,
         results: pokemons,
         success: true,
       });

@@ -1,9 +1,14 @@
-import { Request, Response, Router } from "express";
+import { Request, Response, Router, NextFunction } from "express";
 
 import pokemonsRoutes from "./pokemons";
 import pokemonRoutes from "./pokemon";
 
 const router = Router();
+
+router.all("*", (req: Request, res: Response, next: NextFunction) => {
+  console.log(req.headers["x-forwarded-for"] || req.socket?.remoteAddress);
+  next();
+});
 
 router.get("/", (req: Request, res: Response) => {
   res.json({
