@@ -16,7 +16,7 @@ export function Home() {
 
   const { page, viewed, total } = useSelector((state) => state.pokemons);
 
-  const { prev, next, isLoading } = usePokemons();
+  const { type, prev, next, isLoading } = usePokemons();
 
   const handleType = (type) => {
     if (!type) navigate(`/home`);
@@ -32,7 +32,7 @@ export function Home() {
       <div className={styles.container}>
         <div className={styles.filters}>
           <div className={styles.select_container}>
-            <Select onChange={handleType} />
+            <Select def={type} onChange={handleType} />
           </div>
 
           <div className={styles.search_container}>

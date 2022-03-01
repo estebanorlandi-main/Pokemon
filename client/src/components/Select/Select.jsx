@@ -6,8 +6,8 @@ import styles from "./Select.module.css";
 
 const DEFAULT = "All!";
 
-export function Select({ onChange }) {
-  const [selected, setSelected] = useState(DEFAULT);
+export function Select({ onChange, def }) {
+  const [selected, setSelected] = useState(def || DEFAULT);
   const [show, setShow] = useState(false);
 
   const handleState = () => setShow((old) => !old);

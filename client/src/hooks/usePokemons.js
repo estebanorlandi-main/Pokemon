@@ -48,5 +48,6 @@ export const usePokemons = () => {
 
     prev: handlePrev,
     next: handleNext,
+    type,
   };
 };
