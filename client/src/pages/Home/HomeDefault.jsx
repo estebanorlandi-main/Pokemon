@@ -1,9 +1,8 @@
-import { Loader } from "components/Loader/Loader";
 import PokemonList from "components/PokemonList/PokemonList";
-import { usePokemons } from "hooks/usePokemons";
+import { useSelector } from "react-redux";
 
 export function HomeDefault() {
-  const { pokemons, isLoading } = usePokemons();
+  const { pokemons } = useSelector((state) => state.pokemons);
 
-  return !isLoading ? <PokemonList pokemons={pokemons} /> : <Loader />;
+  return <PokemonList pokemons={pokemons} />;
 }

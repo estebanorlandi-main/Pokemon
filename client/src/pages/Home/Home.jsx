@@ -6,6 +6,7 @@ import { setSearch } from "redux/actions/pokemon";
 import { Select } from "components/Select/Select";
 import { usePokemons } from "hooks/usePokemons";
 import { PageHandler } from "components/PageHandler/PageHandler";
+import { Loader } from "components/Loader/Loader";
 
 import styles from "./Home.module.css";
 
@@ -14,7 +15,7 @@ export function Home() {
   const navigate = useNavigate();
 
   const { page, viewed, total } = useSelector((state) => state.pokemons);
-  const { next, prev } = usePokemons();
+  const { next, prev, isLoading } = usePokemons();
 
   const handleType = (type) => {
     if (!type) navigate(`/home`);
@@ -43,7 +44,7 @@ export function Home() {
             <span className={styles.pokemons_number}>
               {viewed} / {total}
             </span>
-            <Outlet />
+            {!isLoading ? <Outlet /> : <Loader />}
           </>
         </PageHandler>
       </div>

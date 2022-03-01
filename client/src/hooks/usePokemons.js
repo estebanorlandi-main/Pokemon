@@ -17,7 +17,8 @@ export const usePokemons = () => {
       setIsLoading(false);
     };
 
-    if (isLoading) return;
+    if (type && isLoading) return;
+    console.log(type);
     setIsLoading(true);
     p();
 
