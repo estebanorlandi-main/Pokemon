@@ -1,10 +1,12 @@
-import PokemonCard from "components/PokemonCard/PokemonCard";
+import { useSelector } from "react-redux";
 
-import { Loader } from "components/Loader/Loader";
+import PokemonCard from "components/PokemonCard/PokemonCard";
 
 import styles from "./PokemonList.module.css";
 
-function PokemonList({ pokemons }) {
+function PokemonList() {
+  const { pokemons } = useSelector((state) => state.pokemons);
+
   return (
     <div className={styles.container}>
       {pokemons.map(({ id, name, types }) => (

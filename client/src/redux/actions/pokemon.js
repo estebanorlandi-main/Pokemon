@@ -9,16 +9,16 @@ export const SET_TYPE = "SET_TYPE";
 
 export const fetchPokemons = ({ page, type, search }) => {
   return async (dispatch) => {
-    // Remove pokemons before fetch
     dispatch({ type: REMOVE_POKEMONS });
     const payload = await getPokemons({ page, type, search });
     dispatch({ type: GET_POKEMONS, payload });
-    return { payload };
+    return payload;
   };
 };
 
 export const fetchDetails = (id) => {
   return async (dispatch) => {
+    dispatch({ type: REMOVE_DETAILS_POKEMON });
     const promise = getDetails(id);
     const res = await promise;
     dispatch({ type: GET_DETAILS_POKEMONS, payload: res });

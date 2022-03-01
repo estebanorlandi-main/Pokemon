@@ -15,7 +15,8 @@ export function Home() {
   const navigate = useNavigate();
 
   const { page, viewed, total } = useSelector((state) => state.pokemons);
-  const { next, prev, isLoading } = usePokemons();
+
+  const { prev, next, isLoading } = usePokemons();
 
   const handleType = (type) => {
     if (!type) navigate(`/home`);
@@ -40,12 +41,17 @@ export function Home() {
         </div>
 
         <PageHandler current={page + 1} prev={prev} next={next}>
-          <>
-            <span className={styles.pokemons_number}>
-              {viewed} / {total}
-            </span>
-            {!isLoading ? <Outlet /> : <Loader />}
-          </>
+          {!isLoading ? (
+            <>
+              <span className={styles.pokemons_number}>
+                {viewed} / {total}
+              </span>
+
+              <Outlet />
+            </>
+          ) : (
+            <Loader />
+          )}
         </PageHandler>
       </div>
     </main>
