@@ -1,7 +1,6 @@
 import * as Icons from "../components/Icons";
 
 export { getPokemons, getDetails } from "./api";
-export { useQuery } from "./hooks";
 
 export const getPokemonImage = (id) =>
   `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;

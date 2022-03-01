@@ -2,7 +2,6 @@
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
-  align-items: center;
 
   position: relative;
   height: 100%;
@@ -14,6 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 5vw;
 }
 
 .back_btn {
@@ -29,8 +29,11 @@
   text-align: left;
   font-weight: 700;
   font-size: 1.25rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 0;
   cursor: pointer;
+}
+.back_btn span {
+  display: none;
 }
 
 .pokemon_id {
@@ -54,9 +57,10 @@
   flex-flow: row wrap;
   align-items: center;
   gap: 1rem;
+  list-style-type: none;
 
   width: max-content;
-  margin: 2rem auto 0 auto;
+  margin: 0 auto 2rem auto;
 
   font-size: 1rem;
   font-weight: bold;
@@ -68,13 +72,18 @@
   flex-flow: row;
   align-items: center;
   gap: 0.25rem;
+  text-transform: capitalize;
+  text-decoration: none;
+  color: #fff;
+  padding: 0.25rem 1rem;
+  background: #333;
+  border-radius: 5rem;
 }
 
 .body {
   position: relative;
   padding: 1rem 2rem 3rem 2rem;
   width: 100%;
-  background-color: #1e1e1e;
   color: #fff;
 }
 
@@ -166,7 +175,45 @@
 
 @media screen and (min-width: 45rem) {
   .container {
-    flex-flow: row;
+    flex-flow: column;
+  }
+
+  .back_btn span {
+    display: block;
+  }
+
+  .main {
+    margin: 3rem 0;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+  }
+  .main figure {
+    max-width: max-content;
+    margin: 0 auto;
+  }
+
+  .pokemon_image {
+    width: 25vw;
+    min-width: 20rem;
+    max-width: 25rem;
+  }
+  .pokemon_types {
+    margin: 0 0 2rem 0;
+  }
+
+  .pokemon_type {
+    font-size: 1.25rem;
+  }
+  .pokemon_type_icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .body {
+    width: max-content;
+    padding: 0 5vw;
   }
 
   .pokemon_name {
@@ -175,6 +222,10 @@
 
   .section_name {
     margin: 0;
+  }
+
+  .info_item {
+    width: 10rem;
   }
 
   .stats_list {

@@ -1,22 +1,22 @@
 import { Outlet, useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { SearchBar } from "components/SearchBar/SearchBar";
 
-import { setSearch } from "redux/actions/pokemon";
 import { Select } from "components/Select/Select";
 import { usePokemons } from "hooks/usePokemons";
 import { PageHandler } from "components/PageHandler/PageHandler";
 import { Loader } from "components/Loader/Loader";
 
 import styles from "./Home.module.css";
+import { useState } from "react";
 
 export function Home() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [search, setSearch] = useState("");
 
   const { page, viewed, total } = useSelector((state) => state.pokemons);
 
-  const { type, prev, next, isLoading } = usePokemons();
+  const { type, prev, next, isLoading } = usePokemons(search);
 
   const handleType = (type) => {
     if (!type) navigate(`/home`);
@@ -24,7 +24,7 @@ export function Home() {
   };
 
   const handleName = (name) => {
-    dispatch(setSearch(name));
+    setSearch(name);
   };
 
   return (

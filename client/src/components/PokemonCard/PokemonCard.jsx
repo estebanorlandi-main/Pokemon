@@ -4,40 +4,28 @@ import Image from "components/Image/Image";
 import styles from "./PokemonCard.module.css";
 import { Link } from "react-router-dom";
 import { getPokemonImage } from "utils";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 function PokemonCard({ id, name, types }) {
   const pokemonImg = getPokemonImage(id);
-  const [show, setShow] = useState(false);
 
   const ref = useRef(null);
 
-  const onImageLoad = ({ success }) => {
-    if (success) {
-    }
-
-    if (!success) {
-    }
-
+  const onImageLoad = () => {
     ref.current.style.transform = `translate(0, 0)`;
-    setShow(true);
+    ref.current.style.opacity = `1`;
   };
 
   useEffect(() => {
     const y = Math.floor(Math.random() * 100);
-    const x =
-      Math.random() > 0.5
-        ? Math.floor(Math.random() *  100)
-        : -Math.floor(Math.random() * 100);
+    let x = Math.floor(Math.random() * 200);
+    x *= Math.round(Math.random()) ? 1 : -1;
     ref.current.style.transform = `translate(${x}%, ${y}%)`;
+    ref.current.style.opacity = `0`;
   }, [ref]);
 
   return (
-    <Link
-      ref={ref}
-      className={`${styles.pokemon} ${show ? styles.show : ""}`}
-      to={`/pokemon/${name}`}
-    >
+    <Link ref={ref} className={styles.pokemon} to={`/pokemon/${name}`}>
       <div className={styles.pokemon_container}>
         <div className={`${styles.image_container} c-${types[0]}`}>
           <Image
