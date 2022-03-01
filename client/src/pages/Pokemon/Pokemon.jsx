@@ -7,6 +7,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import { fetchDetails, removeDetails } from "redux/actions/pokemon";
 import { getIconComponent, getPokemonImage } from "utils";
+import Image from "components/Image/Image";
 
 import styles from "./Pokemon.module.css";
 
@@ -55,7 +56,7 @@ const Pokemon = () => {
 
       <figure className={styles.image_container}>
         {pokemon?.name ? (
-          <img
+          <Image
             className={styles.pokemon_image}
             src={getPokemonImage(pokemon?.id)}
             alt=""
