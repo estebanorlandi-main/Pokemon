@@ -5,9 +5,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 10vh 5vw;
-  background: linear-gradient(#0003, #000),
-    url("assets/images/branden-skeli-bRojCEo0uow-unsplash.jpg") center;
-  background-size: cover;
+  background: linear-gradient(-80deg, #0006, #000),
+    url("assets/images/branden-skeli-bRojCEo0uow-unsplash.jpg") no-repeat center;
 }
 
 .header {
@@ -21,32 +20,37 @@
   font-weight: bold;
 }
 
-.toHome {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
+.primary {
   gap: 0.5rem;
-  width: max-content;
+  font-size: 1.5rem;
+}
+
+.primary * {
+  font-size: 1.25rem;
   color: #fff;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 1.5rem;
-  padding: 0.5rem 1rem;
-  transition: all 0.25s;
 }
 
-.toHome::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  background: #fff;
-  transition: all 0.25s;
+.icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  transform: translate(0, 1px);
+  transition: all 0.25s ease;
 }
 
-@media screen and (min-width: 40rem) {
+.primary:hover .icon {
+  transform: translate(5px, 1px);
+}
+
+@media screen and (min-width: 60rem) {
+  .main {
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    background: linear-gradient(-80deg, #0003, #000),
+      url("assets/images/branden-skeli-bRojCEo0uow-unsplash.jpg") no-repeat 25%
+        center;
+  }
+  .header {
+  }
 }

@@ -7,10 +7,12 @@ import PokemonList from "components/PokemonList/PokemonList";
 import { Error404 } from "pages/404/404";
 
 import "./App.css";
+import { Errors } from "components/Errors/Errors";
 
 function App() {
   return (
     <div className="App">
+      <Errors />
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route path="/home" element={<Home />}>

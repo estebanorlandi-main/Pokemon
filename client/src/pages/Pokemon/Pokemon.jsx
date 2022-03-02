@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BiChevronLeft, BiHeart, BiShield } from "react-icons/bi";
 import { RiSwordFill } from "react-icons/ri";
 import { MdSpeed } from "react-icons/md";
@@ -7,7 +7,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 
 import { fetchDetails, removeDetails } from "redux/actions/pokemon";
 import { getIconComponent, getPokemonImage } from "utils";
-import Image from "components/Image/Image";
+import { Image } from "components/Image";
 
 import styles from "./Pokemon.module.css";
 
@@ -25,6 +25,9 @@ const Pokemon = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [color, setColor] = useState("");
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const { pokemon } = useSelector((state) => state.pokemons);
 
   const params = useParams();
@@ -34,6 +37,16 @@ const Pokemon = () => {
     dispatch(fetchDetails(id));
     return () => dispatch(removeDetails());
   }, [dispatch, id]);
+
+  useEffect(() => {
+    if (pokemon?.name) {
+      setColor(pokemon.types[0]);
+    }
+  }, [pokemon]);
+
+  const handleLoad = () => {
+    setIsLoaded(true);
+  };
 
   const handlePage = () => navigate(-1);
 
@@ -47,16 +60,21 @@ const Pokemon = () => {
       </header>
 
       <main className={styles.main}>
-        <figure className={styles.image_container}>
+        <div
+          className={
+            styles.image_container + ` ${isLoaded ? styles.image_enter : ""}`
+          }
+        >
           {pokemon?.name ? (
             <Image
+              onLoad={handleLoad}
               className={styles.pokemon_image}
               src={getPokemonImage(pokemon?.id)}
               alt=""
             />
           ) : null}
-          <figcaption></figcaption>
-        </figure>
+          <div className={styles.decoration + ` ${"c-" + color}`}></div>
+        </div>
 
         <div className={styles.body}>
           <ul className={styles.pokemon_types}>
@@ -116,11 +134,6 @@ const Pokemon = () => {
                     ))
                   : undefined}
               </ul>
-            </section>
-
-            <section>
-              <h3>Abilities</h3>
-              <p>Under construction!</p>
             </section>
           </div>
         </div>

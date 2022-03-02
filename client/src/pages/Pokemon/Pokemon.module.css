@@ -1,4 +1,4 @@
-.container {
+.bgontainer {
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
@@ -6,7 +6,6 @@
   position: relative;
   height: 100%;
   width: 100%;
-  overflow-x: hidden;
 }
 
 .top_bar {
@@ -41,8 +40,28 @@
 }
 
 .image_container {
+  transform: translate(0, -100%);
+  opacity: 0;
+  position: relative;
   padding: 5vh 0;
   width: 100%;
+  transition: all 0.25s;
+}
+
+.image_enter {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.decoration {
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 65%;
+  height: 10rem;
+  border-radius: 100%;
 }
 
 .pokemon_image {
@@ -50,6 +69,7 @@
   margin: 0 auto;
   width: 15rem;
   max-width: 30rem;
+  filter: drop-shadow(0 0.75rem 0.5rem #0005);
 }
 
 .pokemon_types {
@@ -60,7 +80,7 @@
   list-style-type: none;
 
   width: max-content;
-  margin: 0 auto 2rem auto;
+  margin: 5rem auto 2rem auto;
 
   font-size: 1rem;
   font-weight: bold;
@@ -71,13 +91,18 @@
   display: flex;
   flex-flow: row;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
   text-transform: capitalize;
   text-decoration: none;
   color: #fff;
-  padding: 0.25rem 1rem;
+  padding: 0.5rem 1rem;
   background: #333;
   border-radius: 5rem;
+}
+
+.pokemon_type_icon {
+  width: 1.35rem;
+  height: 1.35rem;
 }
 
 .body {
@@ -174,7 +199,7 @@
 }
 
 @media screen and (min-width: 45rem) {
-  .container {
+  .bgontainer {
     flex-flow: column;
   }
 
@@ -189,9 +214,18 @@
     height: 100%;
     align-items: center;
   }
+
   .main figure {
     max-width: max-content;
     margin: 0 auto;
+  }
+
+  .image_container {
+    transform: translate(-100%, 0);
+  }
+  .image_enter {
+    transform: translate(0, 0);
+    opacity: 1;
   }
 
   .pokemon_image {
@@ -199,6 +233,7 @@
     min-width: 20rem;
     max-width: 25rem;
   }
+
   .pokemon_types {
     margin: 0 0 2rem 0;
   }
@@ -212,7 +247,7 @@
   }
 
   .body {
-    width: max-content;
+    width: 100%;
     padding: 0 5vw;
   }
 
@@ -224,8 +259,12 @@
     margin: 0;
   }
 
+  .info_list {
+    display: flex;
+    flex-flow: row wrap;
+  }
   .info_item {
-    width: 10rem;
+    width: 7rem;
   }
 
   .stats_list {

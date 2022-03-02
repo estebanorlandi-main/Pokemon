@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router";
-import { fetchPokemons } from "redux/actions/pokemon";
+import { fetchPokemons, removePokemons } from "redux/actions/pokemon";
 
 export const usePokemons = (search) => {
   const dispatch = useDispatch();
@@ -14,19 +14,20 @@ export const usePokemons = (search) => {
     const promise = async () => {
       const params = { page: 0, type: type || null };
       if (search) params.search = search;
-
       const res = await dispatch(fetchPokemons(params));
-      const { next, prev } = res;
-
-      console.log({ next, prev });
-
-      setPages({ prev, next });
-
       setIsLoading(false);
+
+      if (!res) return;
+      const { next, prev } = res;
+      setPages({ prev, next });
     };
 
     setIsLoading(true);
     promise();
+
+    return () => {
+      dispatch(removePokemons());
+    };
   }, [dispatch, type, search]);
 
   const handlePrev = async () => {

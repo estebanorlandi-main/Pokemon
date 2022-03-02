@@ -1,20 +1,22 @@
+import { useState } from "react";
+
 import { Outlet, useNavigate } from "react-router";
 import { useSelector } from "react-redux";
-import { SearchBar } from "components/SearchBar/SearchBar";
 
-import { Select } from "components/Select/Select";
 import { usePokemons } from "hooks/usePokemons";
+
+import { SearchBar } from "components/SearchBar/SearchBar";
+import { Select } from "components/Select/Select";
 import { PageHandler } from "components/PageHandler/PageHandler";
 import { Loader } from "components/Loader/Loader";
 
 import styles from "./Home.module.css";
-import { useState } from "react";
 
 export function Home() {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
 
-  const { page, viewed, total } = useSelector((state) => state.pokemons);
+  const { page, pokemons } = useSelector((state) => state.pokemons);
 
   const { type, prev, next, isLoading } = usePokemons(search);
 
@@ -40,19 +42,17 @@ export function Home() {
           </div>
         </div>
 
-        <PageHandler current={page + 1} prev={prev} next={next}>
-          {!isLoading ? (
-            <>
-              <span className={styles.pokemons_number}>
-                {viewed} / {total}
-              </span>
-
+        {!isLoading ? (
+          pokemons?.length ? (
+            <PageHandler current={page + 1} prev={prev} next={next}>
               <Outlet />
-            </>
+            </PageHandler>
           ) : (
-            <Loader />
-          )}
-        </PageHandler>
+            <></>
+          )
+        ) : (
+          <Loader />
+        )}
       </div>
     </main>
   );

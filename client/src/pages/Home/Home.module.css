@@ -17,11 +17,6 @@
   width: 100%;
 }
 
-.pokemons_number {
-  color: #888;
-  font-size: 0.9rem;
-}
-
 @media screen and (min-width: 40rem) {
   .filters {
     flex-flow: row;
@@ -32,6 +27,7 @@
     max-width: 15rem;
   }
   .search_container {
+    width: max-content;
     max-width: 25rem;
   }
 }

@@ -1,7 +1,9 @@
 import { useState } from "react";
+
 import { Pokeball } from "components/Pokeball/Pokeball";
 
 import styles from "./SearchBar.module.css";
+import { Primary } from "components/Buttons";
 
 export const SearchBar = ({ onSearch }) => {
   const [inputs, setInputs] = useState({ search: "" });
@@ -24,9 +26,9 @@ export const SearchBar = ({ onSearch }) => {
         autoComplete="off"
         placeholder="Search your Pokemon!"
       />
-      <button type="submit">
+      <Primary className={styles.btn} type="submit">
         <Pokeball size="xsm" />
-      </button>
+      </Primary>
     </form>
   );
 };

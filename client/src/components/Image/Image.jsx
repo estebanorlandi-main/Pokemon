@@ -1,7 +1,8 @@
 import { useState } from "react";
+
 import missingno from "assets/images/MissingNo.png";
 
-function Image({ onLoad, alt, src, className, animationClass }) {
+export function Image({ onLoad, alt, src, className, animationClass }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [image, setImage] = useState(src);
 
@@ -25,5 +26,3 @@ function Image({ onLoad, alt, src, className, animationClass }) {
     />
   );
 }
-
-export default Image;

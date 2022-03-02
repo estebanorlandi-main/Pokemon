@@ -11,14 +11,10 @@ const encodeQuery = (data) => {
 };
 
 export const getPokemons = async ({ page, ...params }) => {
-  try {
-    const query = encodeQuery(params);
-    const url = REACT_APP_API_URL + `/pokemons${query ? "?" + query : ""}`;
-    const { data } = await axios(page || url);
-    return data;
-  } catch (e) {
-    console.log(e);
-  }
+  const query = encodeQuery(params);
+  const url = REACT_APP_API_URL + `/pokemons${query ? "?" + query : ""}`;
+  const { data } = await axios(page || url);
+  return data;
 };
 
 export const getDetails = (id) => axios(`${REACT_APP_API_URL}/pokemon/${id}`);

@@ -6,13 +6,18 @@ export const REMOVE_DETAILS_POKEMON = "REMOVE_DETAILS_POKEMON";
 export const REMOVE_POKEMONS = "REMOVE_POKEMONS";
 export const SET_SEARCH = "SET_SEARCH";
 export const SET_TYPE = "SET_TYPE";
+export const ERROR = "ERROR";
 
 export const fetchPokemons = ({ page, type, search }) => {
   return async (dispatch) => {
     dispatch({ type: REMOVE_POKEMONS });
-    const payload = await getPokemons({ page, type, search });
-    dispatch({ type: GET_POKEMONS, payload });
-    return payload;
+    try {
+      const payload = await getPokemons({ page, type, search });
+      dispatch({ type: GET_POKEMONS, payload });
+      return payload;
+    } catch (e) {
+      dispatch({ type: ERROR, payload: e.response.data });
+    }
   };
 };
 

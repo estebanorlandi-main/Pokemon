@@ -1,4 +1,4 @@
-import PageButton from "components/Buttons/PrimaryButton";
+import { PageButton } from "components/Buttons";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 import styles from "./PageHandler.module.css";

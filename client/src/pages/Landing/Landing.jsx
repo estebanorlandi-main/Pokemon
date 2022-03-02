@@ -1,9 +1,17 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
+
 import { BiRightArrowAlt } from "react-icons/bi";
+import { Primary } from "components/Buttons";
 
 import styles from "./Landing.module.css";
 
 function Landing() {
+  const navigate = useNavigate();
+
+  const goHome = () => {
+    navigate("/home");
+  };
+
   return (
     <main>
       <section className={styles.main}>
@@ -12,10 +20,12 @@ function Landing() {
           <h1 className={styles.title}>Pokemon</h1>
         </div>
 
-        <Link to="/home" className={styles.toHome}>
-          Home
-          <BiRightArrowAlt className={styles.icon} />
-        </Link>
+        <Primary onClick={goHome} className={styles.primary}>
+          <>
+            Home
+            <BiRightArrowAlt className={styles.icon} />
+          </>
+        </Primary>
       </section>
     </main>
   );
