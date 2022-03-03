@@ -1,5 +1,7 @@
-import "./Navbar.css";
+import './Navbar.css';
 
-export function Navbar() {
-  return <nav></nav>;
+function Navbar() {
+  return <nav />;
 }
+
+export default Navbar;

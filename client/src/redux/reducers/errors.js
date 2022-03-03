@@ -1,18 +1,19 @@
-import { ERROR, REMOVE_ERROR } from "../actions/errors";
+import { ERROR, REMOVE_ERROR } from '../actions/errors';
 
 const initialState = {
   errors: [],
 };
 
-function errorsReducer(state = initialState, action) {
+function errorsReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case ERROR:
+    case ERROR: {
       const newError = {
         name: action.payload.name,
         message: action.payload.message,
         id: new Date().getTime(),
       };
       return { ...state, errors: [...state.errors, newError] };
+    }
     case REMOVE_ERROR:
       return {
         ...state,

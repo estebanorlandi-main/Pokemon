@@ -1,28 +1,28 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Outlet, useNavigate } from "react-router";
-import { useSelector } from "react-redux";
+import { Outlet, useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
 
-import { usePokemons } from "hooks/usePokemons";
+import usePokemons from 'hooks/usePokemons';
 
-import { SearchBar } from "components/SearchBar/SearchBar";
-import { Select } from "components/Select/Select";
-import { PageHandler } from "components/PageHandler/PageHandler";
-import { Loader } from "components/Loader/Loader";
+import { SearchBar } from 'components/SearchBar/SearchBar';
+import { Select } from 'components/Select/Select';
+import { PageHandler } from 'components/PageHandler/PageHandler';
+import { Loader } from 'components/Loader/Loader';
 
-import styles from "./Home.module.css";
+import styles from './Home.module.css';
 
-export function Home() {
+export default function Home() {
   const navigate = useNavigate();
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
   const { page, pokemons } = useSelector((state) => state.pokemons);
 
   const { type, prev, next, isLoading } = usePokemons(search);
 
-  const handleType = (type) => {
-    if (!type) navigate(`/home`);
-    else navigate(`/home/${type}`);
+  const handleType = (homeType) => {
+    if (!homeType) navigate(`/home`);
+    else navigate(`/home/${homeType}`);
   };
 
   const handleName = (name) => {

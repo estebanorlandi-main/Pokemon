@@ -5,7 +5,7 @@ import {
   REMOVE_POKEMONS,
   SET_SEARCH,
   SET_TYPE,
-} from "redux/actions/pokemon";
+} from 'redux/actions/pokemon';
 
 const initialState = {
   pokemons: [],
@@ -14,9 +14,9 @@ const initialState = {
   page: 0,
 };
 
-function pokemonReducer(state = initialState, action) {
+function pokemonReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case GET_POKEMONS:
+    case GET_POKEMONS: {
       const { results, next, page, prev, count, total, perPage } =
         action.payload;
 
@@ -31,6 +31,7 @@ function pokemonReducer(state = initialState, action) {
         next,
         prev,
       };
+    }
 
     case GET_DETAILS_POKEMONS:
       return {
@@ -46,7 +47,7 @@ function pokemonReducer(state = initialState, action) {
     case SET_TYPE:
       return {
         ...state,
-        filters: { ...state.filters, type: action.payload, search: "" },
+        filters: { ...state.filters, type: action.payload, search: '' },
       };
 
     case REMOVE_DETAILS_POKEMON:

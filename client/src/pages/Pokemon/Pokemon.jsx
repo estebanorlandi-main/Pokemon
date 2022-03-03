@@ -1,21 +1,22 @@
-import { useEffect, useState } from "react";
-import { BiChevronLeft } from "react-icons/bi";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { BiChevronLeft } from 'react-icons/bi';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams, useNavigate } from 'react-router-dom';
 
-import { fetchDetails, removeDetails } from "redux/actions/pokemon";
-import { getIconComponent, getPokemonImage } from "utils";
-import { Image } from "components/Image";
-import { StatsList } from "components/StatsList/StatsList";
-import ListTypes from "components/ListTypes/ListTypes";
+import { fetchDetails, removeDetails } from 'redux/actions/pokemon';
+import { getPokemonImage } from 'utils';
+import { StatsList } from 'components/StatsList/StatsList';
 
-import styles from "./Pokemon.module.css";
+import Image from 'components/Image';
+import ListTypes from 'components/ListTypes/ListTypes';
 
-const Pokemon = () => {
+import styles from './Pokemon.module.css';
+
+function Pokemon() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
 
   const { pokemon } = useSelector((state) => state.pokemons);
@@ -53,7 +54,7 @@ const Pokemon = () => {
       <main className={styles.main}>
         <div
           className={
-            styles.image_container + ` ${isLoaded ? styles.image_enter : ""}`
+            styles.image_container + ` ${isLoaded ? styles.image_enter : ''}`
           }
         >
           {pokemon?.name ? (
@@ -64,7 +65,7 @@ const Pokemon = () => {
               alt=""
             />
           ) : null}
-          <div className={styles.decoration + ` ${"c-" + color}`}></div>
+          <div className={styles.decoration + ` ${'c-' + color}`}></div>
         </div>
 
         <div className={styles.body}>
@@ -111,6 +112,6 @@ const Pokemon = () => {
       </main>
     </div>
   );
-};
+}
 
 export default Pokemon;

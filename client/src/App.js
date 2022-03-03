@@ -1,13 +1,13 @@
-import { Route, Routes } from "react-router";
+import { Route, Routes } from 'react-router';
 
-import Landing from "pages/Landing/Landing";
-import Home from "pages/Home";
-import Pokemon from "pages/Pokemon/Pokemon";
-import PokemonList from "components/PokemonList/PokemonList";
-import { Error404 } from "pages/404/404";
+import Landing from 'pages/Landing/Landing';
+import Home from 'pages/Home';
+import Pokemon from 'pages/Pokemon/Pokemon';
+import PokemonList from 'components/PokemonList/PokemonList';
+import { Error404 } from 'pages/404/404';
+import { Errors } from 'components/Errors/Errors';
 
-import "./App.css";
-import { Errors } from "components/Errors/Errors";
+import './App.css';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path="/home/" element={<PokemonList />} />
           <Route path="/home/:type" element={<PokemonList />} />
         </Route>
-        <Route path="/pokemon/:id" element={<Pokemon />}></Route>
+        <Route path="/pokemon/:id" element={<Pokemon />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </div>

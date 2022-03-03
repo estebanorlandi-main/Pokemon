@@ -1,6 +1,6 @@
-import * as Icons from "../components/Icons";
+import * as Icons from '../components/Icons';
 
-export { getPokemons, getDetails } from "./api";
+export { getPokemons, getDetails } from './api';
 
 export const getPokemonImage = (id) =>
   `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
@@ -32,22 +32,22 @@ export const remToPx = (rem) =>
   rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 
 export const typesArray = [
-  "bug",
-  "dark",
-  "dragon",
-  "electric",
-  "fairy",
-  "fighting",
-  "fire",
-  "flying",
-  "ghost",
-  "grass",
-  "ground",
-  "ice",
-  "normal",
-  "poison",
-  "psychic",
-  "rock",
-  "steel",
-  "water",
+  'bug',
+  'dark',
+  'dragon',
+  'electric',
+  'fairy',
+  'fighting',
+  'fire',
+  'flying',
+  'ghost',
+  'grass',
+  'ground',
+  'ice',
+  'normal',
+  'poison',
+  'psychic',
+  'rock',
+  'steel',
+  'water',
 ];

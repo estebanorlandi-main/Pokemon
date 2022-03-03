@@ -1,11 +1,11 @@
-import ListTypes from "components/ListTypes/ListTypes";
-import { Image } from "components/Image";
+import ListTypes from 'components/ListTypes/ListTypes';
+import Image from 'components/Image';
 
-import { Link } from "react-router-dom";
-import { getPokemonImage } from "utils";
-import { useEffect, useRef } from "react";
+import { Link } from 'react-router-dom';
+import { getPokemonImage } from 'utils';
+import { useEffect, useRef } from 'react';
 
-import styles from "./PokemonCard.module.css";
+import styles from './PokemonCard.module.css';
 
 function PokemonCard({ id, name, types }) {
   const pokemonImg = getPokemonImage(id);
