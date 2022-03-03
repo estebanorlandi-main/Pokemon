@@ -1,25 +1,15 @@
 import { useEffect, useState } from "react";
-import { BiChevronLeft, BiHeart, BiShield } from "react-icons/bi";
-import { RiSwordFill } from "react-icons/ri";
-import { MdSpeed } from "react-icons/md";
+import { BiChevronLeft } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
 import { fetchDetails, removeDetails } from "redux/actions/pokemon";
 import { getIconComponent, getPokemonImage } from "utils";
 import { Image } from "components/Image";
+import { StatsList } from "components/StatsList/StatsList";
+import ListTypes from "components/ListTypes/ListTypes";
 
 import styles from "./Pokemon.module.css";
-
-const iconSize = 24;
-const stats = {
-  hp: <BiHeart size={iconSize} className={styles.stat_icon} />,
-  defense: <BiShield size={iconSize} className={styles.stat_icon} />,
-  attack: <RiSwordFill size={iconSize} className={styles.stat_icon} />,
-  "special-attack": "SpA",
-  "special-defense": "SpD",
-  speed: <MdSpeed size={iconSize} className={styles.stat_icon} />,
-};
 
 const Pokemon = () => {
   const dispatch = useDispatch();
@@ -49,12 +39,13 @@ const Pokemon = () => {
   };
 
   const handlePage = () => navigate(-1);
+  const handleClick = (type) => navigate(`/home/${type}`);
 
   return (
     <div className={styles.container}>
       <header className={styles.top_bar}>
         <button onClick={handlePage} className={styles.back_btn}>
-          <BiChevronLeft size={iconSize} /> <span>back</span>
+          <BiChevronLeft size={24} /> <span>back</span>
         </button>
         <h3 className={styles.pokemon_id}>#{pokemon?.id}</h3>
       </header>
@@ -78,22 +69,14 @@ const Pokemon = () => {
 
         <div className={styles.body}>
           <ul className={styles.pokemon_types}>
-            {pokemon?.types
-              ? pokemon.types.map((type, i) => {
-                  const Icon = getIconComponent(type);
-                  return (
-                    <li key={type + i}>
-                      <Link
-                        className={styles.pokemon_type}
-                        to={`/home/${type}`}
-                      >
-                        <Icon className={styles.pokemon_type_icon} />
-                        {type}
-                      </Link>
-                    </li>
-                  );
-                })
-              : undefined}
+            {pokemon?.types ? (
+              <ListTypes
+                onClick={handleClick}
+                className={styles.pokemon_type}
+                types={pokemon.types}
+                withText
+              />
+            ) : undefined}
           </ul>
 
           <h1 className={styles.pokemon_name}>{pokemon?.name}</h1>
@@ -121,19 +104,7 @@ const Pokemon = () => {
 
             <section>
               <h3 className={styles.section_name}>Stats</h3>
-              <ul className={styles.stats_list}>
-                {pokemon?.stats?.length
-                  ? pokemon.stats.map(({ name, base }, i) => (
-                      <li
-                        className={styles.stat_item + ` c-${pokemon?.types[0]}`}
-                        key={name + base + i}
-                      >
-                        <div className={styles.stat_name}>{stats[name]}</div>
-                        <span className={styles.stat_value}>{base}</span>
-                      </li>
-                    ))
-                  : undefined}
-              </ul>
+              <StatsList color={color} />
             </section>
           </div>
         </div>

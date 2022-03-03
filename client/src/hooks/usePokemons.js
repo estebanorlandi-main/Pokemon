@@ -50,8 +50,8 @@ export const usePokemons = (search) => {
   return {
     isLoading,
 
-    prev: handlePrev,
-    next: handleNext,
+    prev: pages.prev ? handlePrev : null,
+    next: pages.next ? handleNext : null,
     type,
   };
 };
