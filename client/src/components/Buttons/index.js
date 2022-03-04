@@ -1,2 +1,2 @@
-export { Primary } from "./Primary/Primary";
-export { PageButton } from "./PageButton/PrimaryButton";
+export { Primary } from './Primary/Primary';
+export { Page } from './Page/Page';

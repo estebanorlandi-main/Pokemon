@@ -1,18 +1,20 @@
-import axios from "axios";
+import axios from 'axios';
 
 const { REACT_APP_API_URL } = process.env;
 
 const encodeQuery = (data) => {
   const encoded = [];
-  for (let d in data)
-    if (data[d] && d !== "page")
-      encoded.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
-  return encoded.join("&");
+
+  Object.entries(data).forEach((d) => {
+    if (d[1] && d[0] !== 'page')
+      encoded.push(`${encodeURIComponent(d[0])}=${encodeURIComponent(d[1])}`);
+  });
+  return encoded.join('&');
 };
 
 export const getPokemons = async ({ page, ...params }) => {
   const query = encodeQuery(params);
-  const url = REACT_APP_API_URL + `/pokemons${query ? "?" + query : ""}`;
+  const url = `${REACT_APP_API_URL}/pokemons${query ? `?${query}` : ''}`;
   const { data } = await axios(page || url);
   return data;
 };

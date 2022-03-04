@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router";
-import { fetchPokemons, removePokemons } from "redux/actions/pokemon";
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router';
+import { fetchPokemons, removePokemons } from 'redux/actions/pokemon';
 
-export const usePokemons = (search) => {
+const usePokemons = (search) => {
   const dispatch = useDispatch();
   const [pages, setPages] = useState({ next: null, prev: null });
   const [isLoading, setIsLoading] = useState(false);
@@ -50,8 +50,10 @@ export const usePokemons = (search) => {
   return {
     isLoading,
 
-    prev: handlePrev,
-    next: handleNext,
+    prev: pages.prev ? handlePrev : null,
+    next: pages.next ? handleNext : null,
     type,
   };
 };
+
+export default usePokemons;

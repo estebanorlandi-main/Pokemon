@@ -9,3 +9,13 @@
 .pageNumber {
   color: #fff;
 }
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  color: #555;
+}
+
+.active {
+  color: #fff;
+}

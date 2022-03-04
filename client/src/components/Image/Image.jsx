@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import missingno from "assets/images/MissingNo.png";
+import missingno from 'assets/images/MissingNo.png';
 
-export function Image({ onLoad, alt, src, className, animationClass }) {
+function Image({ onLoad, src, className, animationClass, alt, width, height }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [image, setImage] = useState(src);
 
@@ -20,9 +20,13 @@ export function Image({ onLoad, alt, src, className, animationClass }) {
     <img
       onLoad={handleLoad}
       onError={handleError}
-      className={`${className} ${isLoaded ? animationClass : ""}`}
+      className={`${className} ${isLoaded ? animationClass : ''}`}
       src={image}
       alt={alt}
+      width={width}
+      height={height}
     />
   );
 }
+
+export default Image;

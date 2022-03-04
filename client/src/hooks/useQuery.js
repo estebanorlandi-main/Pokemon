@@ -1,23 +1,25 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
-export const useQuery = () => {
+const useQuery = () => {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState({});
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    for (const entry of searchParams.entries()) {
+    Object.entries(searchParams).forEach((entry) => {
       const [param, value] = entry;
       setQuery(
         (old) => ({
           ...old,
           [param]: value,
         }),
-        () => setLoading((old) => !old)
+        () => setLoading((old) => !old),
       );
-    }
+    });
   }, [searchParams]);
 
   return { loadingQuery: loading, query };
 };
+
+export default useQuery;
