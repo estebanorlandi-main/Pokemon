@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Outlet, useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
@@ -7,8 +7,8 @@ import usePokemons from 'hooks/usePokemons';
 
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import { Select } from 'components/Select/Select';
-import { PageHandler } from 'components/PageHandler/PageHandler';
-import { Loader } from 'components/Loader/Loader';
+import PageHandler from 'components/PageHandler/PageHandler';
+import Loader from 'components/Loader/Loader';
 
 import styles from './Home.module.css';
 
@@ -16,7 +16,7 @@ export default function Home() {
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
 
-  const { page, pokemons } = useSelector((state) => state.pokemons);
+  const { page } = useSelector((state) => state.pokemons);
 
   const { type, prev, next, isLoading } = usePokemons(search);
 
@@ -28,6 +28,18 @@ export default function Home() {
   const handleName = (name) => {
     setSearch(name);
   };
+
+  useEffect(() => {
+    document.title = `Pokedex | Home`;
+  }, []);
+
+  useEffect(() => {
+    if (!type) {
+      document.title = `Pokedex | Home`;
+      return;
+    }
+    document.title = `Pokedex | Home ${type}`;
+  }, [type]);
 
   return (
     <main>
@@ -42,17 +54,11 @@ export default function Home() {
           </div>
         </div>
 
-        {!isLoading ? (
-          pokemons?.length ? (
-            <PageHandler current={page + 1} prev={prev} next={next}>
-              <Outlet />
-            </PageHandler>
-          ) : (
-            <></>
-          )
-        ) : (
-          <Loader />
-        )}
+        <Loader isLoading={isLoading}>
+          <PageHandler current={page + 1} prev={prev} next={next}>
+            <Outlet />
+          </PageHandler>
+        </Loader>
       </div>
     </main>
   );

@@ -8,15 +8,14 @@ const usePokemons = (search) => {
   const [pages, setPages] = useState({ next: null, prev: null });
   const [isLoading, setIsLoading] = useState(false);
 
-  const { type } = useParams();
+  const { type = null, page = 0 } = useParams();
 
   useEffect(() => {
     const promise = async () => {
-      const params = { page: 0, type: type || null };
+      const params = { page: Number(page), type };
       if (search) params.search = search;
       const res = await dispatch(fetchPokemons(params));
       setIsLoading(false);
-
       if (!res) return;
       const { next, prev } = res;
       setPages({ prev, next });
@@ -28,7 +27,7 @@ const usePokemons = (search) => {
     return () => {
       dispatch(removePokemons());
     };
-  }, [dispatch, type, search]);
+  }, [dispatch, type, page, search]);
 
   const handlePrev = async () => {
     if (!pages.prev) return;

@@ -1,13 +1,16 @@
-import { Pokeball } from "components/Pokeball/Pokeball";
-import styles from "./Loader.module.css";
+import { Pokeball } from 'components/Pokeball/Pokeball';
+import styles from './Loader.module.css';
 
-export function Loader() {
-  return (
-    <div className={styles.loader}>
-      <p>Loading...</p>
-      <div className={styles.spin}>
-        <Pokeball />
+export default function Loader({ children, isLoading }) {
+  if (isLoading)
+    return (
+      <div className={styles.loader}>
+        <p>Loading...</p>
+        <div className={styles.spin}>
+          <Pokeball />
+        </div>
       </div>
-    </div>
-  );
+    );
+
+  return children;
 }

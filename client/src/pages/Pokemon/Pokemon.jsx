@@ -45,7 +45,7 @@ function Pokemon() {
   return (
     <div className={styles.container}>
       <header className={styles.top_bar}>
-        <button onClick={handlePage} className={styles.back_btn}>
+        <button type="button" onClick={handlePage} className={styles.back_btn}>
           <BiChevronLeft size={24} /> <span>back</span>
         </button>
         <h3 className={styles.pokemon_id}>#{pokemon?.id}</h3>
@@ -53,9 +53,9 @@ function Pokemon() {
 
       <main className={styles.main}>
         <div
-          className={
-            styles.image_container + ` ${isLoaded ? styles.image_enter : ''}`
-          }
+          className={`${styles.image_container} ${
+            isLoaded ? styles.image_enter : ''
+          }`}
         >
           {pokemon?.name ? (
             <Image
@@ -65,7 +65,7 @@ function Pokemon() {
               alt=""
             />
           ) : null}
-          <div className={styles.decoration + ` ${'c-' + color}`}></div>
+          <div className={`${styles.decoration} c-${color}`} />
         </div>
 
         <div className={styles.body}>

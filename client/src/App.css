@@ -92,7 +92,7 @@
 }
 
 .error::before {
-  content: "";
+  content: '';
   position: absolute;
   z-index: -2;
   top: 0;
@@ -103,7 +103,7 @@
 }
 
 .error::after {
-  content: "";
+  content: '';
   position: absolute;
   z-index: -1;
   top: 0;
