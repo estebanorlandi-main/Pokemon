@@ -1,10 +1,10 @@
 const colors = {
-  default: "var(--hex-rock)",
-  light: "#fff",
-  dark: "#252525",
+  default: 'var(--hex-rock)',
+  light: '#fff',
+  dark: '#252525',
 };
 
-function RockIcon({ fill = "default", className, size = "1rem" }) {
+function RockIcon({ fill = 'default', className, size = '1rem' }) {
   return (
     <svg
       className={className}

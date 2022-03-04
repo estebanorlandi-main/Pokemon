@@ -1,10 +1,10 @@
 const colors = {
-  default: "var(--hex-dragon)",
-  light: "#fff",
-  dark: "#252525",
+  default: 'var(--hex-dragon)',
+  light: '#fff',
+  dark: '#252525',
 };
 
-function DragonIcon({ fill = "default", className, size = "1rem" }) {
+function DragonIcon({ fill = 'default', className, size = '1rem' }) {
   return (
     <svg
       className={className}

@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { typesArray, getIconComponent } from "utils";
-import { BiChevronDown } from "react-icons/bi";
+import { useState } from 'react';
+import { typesArray, getIconComponent } from 'utils';
+import { BiChevronDown } from 'react-icons/bi';
 
-import styles from "./Select.module.css";
+import styles from './Select.module.css';
 
-const DEFAULT = "All!";
+const DEFAULT = 'All!';
 
-export function Select({ onChange, def }) {
+export default function Select({ onChange, def }) {
   const [selected, setSelected] = useState(def || DEFAULT);
   const [show, setShow] = useState(false);
 
@@ -19,28 +19,37 @@ export function Select({ onChange, def }) {
     else onChange(null);
   };
 
+  const SelectedIcon =
+    selected !== DEFAULT ? getIconComponent(selected) : undefined;
+
   return (
     <div className={styles.container}>
-      <div onClick={handleState} className={styles.selected}>
-        {selected} <BiChevronDown />
-      </div>
-      <ul className={`${styles.options} ${show ? styles.show : ""}`}>
+      <button type="button" onClick={handleState} className={styles.selected}>
+        <div className={styles.selected_left}>
+          {SelectedIcon && <SelectedIcon />}
+          {selected}
+        </div>
+        <BiChevronDown />
+      </button>
+      <ul className={`${styles.options} ${show ? styles.show : ''}`}>
         {DEFAULT !== selected ? (
           <li key={DEFAULT}>
             <button
               className={styles.btn}
               onClick={() => changeSelected(DEFAULT)}
+              type="button"
             >
               {DEFAULT}
             </button>
           </li>
         ) : null}
 
-        {typesArray.map((type, i) => {
+        {typesArray.map((type) => {
           const Icon = getIconComponent(type);
           return type !== selected ? (
-            <li key={type + i}>
+            <li key={type}>
               <button
+                type="button"
                 className={styles.btn}
                 onClick={() => changeSelected(type)}
               >

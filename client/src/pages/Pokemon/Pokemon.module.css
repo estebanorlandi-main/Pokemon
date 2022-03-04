@@ -98,6 +98,7 @@
   padding: 0.5rem 1rem;
   background: #333;
   border-radius: 5rem;
+  border: none;
 }
 
 .pokemon_type_icon {

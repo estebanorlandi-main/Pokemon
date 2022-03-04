@@ -1,10 +1,10 @@
 const colors = {
-  default: "var(--hex-ghost)",
-  light: "#fff",
-  dark: "#252525",
+  default: 'var(--hex-ghost)',
+  light: '#fff',
+  dark: '#252525',
 };
 
-function GhostIcon({ fill = "default", className, size = "1rem" }) {
+function GhostIcon({ fill = 'default', className, size = '1rem' }) {
   return (
     <svg
       className={className}

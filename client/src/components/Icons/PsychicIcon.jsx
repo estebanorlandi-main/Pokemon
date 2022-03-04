@@ -1,10 +1,10 @@
 const colors = {
-  default: "var(--hex-psychic)",
-  light: "#fff",
-  dark: "#252525",
+  default: 'var(--hex-psychic)',
+  light: '#fff',
+  dark: '#252525',
 };
 
-function PsychicIcon({ fill = "default", className, size = "1rem" }) {
+function PsychicIcon({ fill = 'default', className, size = '1rem' }) {
   return (
     <svg
       className={className}

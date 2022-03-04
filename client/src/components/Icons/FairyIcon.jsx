@@ -1,10 +1,10 @@
 const colors = {
-  default: "var(--hex-fairy)",
-  light: "#fff",
-  dark: "#252525",
+  default: 'var(--hex-fairy)',
+  light: '#fff',
+  dark: '#252525',
 };
 
-function FairyIcon({ fill = "default", className, size = "1rem" }) {
+function FairyIcon({ fill = 'default', className, size = '1rem' }) {
   return (
     <svg
       className={className}

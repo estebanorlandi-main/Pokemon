@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux';
 
 import usePokemons from 'hooks/usePokemons';
 
-import { SearchBar } from 'components/SearchBar/SearchBar';
-import { Select } from 'components/Select/Select';
+import Select from 'components/Select/Select';
+import SearchBar from 'components/SearchBar/SearchBar';
 import PageHandler from 'components/PageHandler/PageHandler';
 import Loader from 'components/Loader/Loader';
 

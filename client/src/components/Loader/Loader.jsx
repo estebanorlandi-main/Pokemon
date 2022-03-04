@@ -1,4 +1,4 @@
-import { Pokeball } from 'components/Pokeball/Pokeball';
+import Pokeball from 'components/Pokeball/Pokeball';
 import styles from './Loader.module.css';
 
 export default function Loader({ children, isLoading }) {

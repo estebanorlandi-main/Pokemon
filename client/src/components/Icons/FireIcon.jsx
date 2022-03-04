@@ -1,10 +1,10 @@
 const colors = {
-  default: "var(--hex-fire)",
-  light: "#fff",
-  dark: "#252525",
+  default: 'var(--hex-fire)',
+  light: '#fff',
+  dark: '#252525',
 };
 
-function FireIcon({ fill = "default", className, size = "1rem" }) {
+function FireIcon({ fill = 'default', className, size = '1rem' }) {
   return (
     <svg
       className={className}

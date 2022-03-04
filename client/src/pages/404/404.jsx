@@ -1,7 +1,7 @@
-import { Pokeball } from "components/Pokeball/Pokeball";
-import styles from "./404.module.css";
+import Pokeball from 'components/Pokeball/Pokeball';
+import styles from './404.module.css';
 
-export function Error404() {
+export default function Error404() {
   return (
     <main className={styles.container}>
       <h1 className={styles.error}>

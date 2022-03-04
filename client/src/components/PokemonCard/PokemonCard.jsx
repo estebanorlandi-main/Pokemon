@@ -42,7 +42,7 @@ function PokemonCard({ id, name, types }) {
         <div className={styles.pokemon_body}>
           <h3 className={styles.pokemon_name}>{name}</h3>
           <ul className={styles.pokemon_types}>
-            <ListTypes types={types} />
+            <ListTypes className={styles.type} types={types} />
           </ul>
         </div>
       </div>

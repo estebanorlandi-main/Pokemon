@@ -1,22 +1,14 @@
-import { useSelector } from "react-redux";
-import { ErrorItem } from "./ErrorItem";
+import { useSelector } from 'react-redux';
+import ErrorItem from './ErrorItem';
 
-export function Errors() {
+export default function Errors() {
   const { errors } = useSelector((state) => state.errors);
 
   return (
-    <>
-      {errors?.length ? (
-        <ul className="messages">
-          {errors.map((error) => (
-            <ErrorItem
-              id={error.id}
-              name={error.name}
-              message={error.message}
-            />
-          ))}
-        </ul>
-      ) : undefined}
-    </>
+    <ul className="messages">
+      {errors.map((error) => (
+        <ErrorItem id={error.id} name={error.name} message={error.message} />
+      ))}
+    </ul>
   );
 }

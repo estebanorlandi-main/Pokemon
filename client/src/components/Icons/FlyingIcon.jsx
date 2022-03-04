@@ -1,10 +1,10 @@
 const colors = {
-  default: "var(--hex-flying)",
-  light: "#fff",
-  dark: "#252525",
+  default: 'var(--hex-flying)',
+  light: '#fff',
+  dark: '#252525',
 };
 
-function FlyingIcon({ fill = "default", className, size = "1rem" }) {
+function FlyingIcon({ fill = 'default', className, size = '1rem' }) {
   return (
     <svg
       className={className}

@@ -1,2 +1,2 @@
-export { Primary } from './Primary/Primary';
-export { Page } from './Page/Page';
+export { default as Primary } from './Primary/Primary';
+export { default as Page } from './Page/Page';

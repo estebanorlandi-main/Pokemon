@@ -1,10 +1,10 @@
 const colors = {
-  default: "var(--hex-grass)",
-  light: "#fff",
-  dark: "#252525",
+  default: 'var(--hex-grass)',
+  light: '#fff',
+  dark: '#252525',
 };
 
-function GrassIcon({ fill = "default", className, size = "1rem" }) {
+function GrassIcon({ fill = 'default', className, size = '1rem' }) {
   return (
     <svg
       className={className}

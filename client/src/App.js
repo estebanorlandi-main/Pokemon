@@ -4,8 +4,8 @@ import Landing from 'pages/Landing/Landing';
 import Home from 'pages/Home';
 import Pokemon from 'pages/Pokemon/Pokemon';
 import PokemonList from 'components/PokemonList/PokemonList';
-import { Error404 } from 'pages/404/404';
-import { Errors } from 'components/Errors/Errors';
+import Error404 from 'pages/404/404';
+import Errors from 'components/Errors/Errors';
 
 import './App.css';
 

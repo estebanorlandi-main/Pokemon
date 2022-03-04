@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Pokeball } from "components/Pokeball/Pokeball";
+import Pokeball from 'components/Pokeball/Pokeball';
 
-import styles from "./SearchBar.module.css";
-import { Primary } from "components/Buttons";
+import { Primary } from 'components/Buttons';
+import styles from './SearchBar.module.css';
 
-export const SearchBar = ({ onSearch }) => {
-  const [inputs, setInputs] = useState({ search: "" });
+export default function SearchBar({ onSearch }) {
+  const [inputs, setInputs] = useState({ search: '' });
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -31,4 +31,4 @@ export const SearchBar = ({ onSearch }) => {
       </Primary>
     </form>
   );
-};
+}

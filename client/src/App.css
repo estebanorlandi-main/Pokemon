@@ -84,10 +84,14 @@
 
 .message {
   display: flex;
-  gap: 1rem;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: 0.25rem;
   position: relative;
   z-index: 100;
   padding: 0.5rem 0.75rem;
+  border: none;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -125,12 +129,4 @@
 .message p {
   margin: 0.25rem 0 0 0;
   color: #aaa;
-}
-
-.message button {
-  background-color: transparent;
-  border: none;
-  padding: 0 1rem;
-  color: #fff;
-  cursor: pointer;
 }

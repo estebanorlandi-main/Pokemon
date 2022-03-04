@@ -1,8 +1,12 @@
-import styles from "./Primary.module.css";
+import styles from './Primary.module.css';
 
-export function Primary({ children, className, ...props }) {
+export default function Primary({ children, className, onClick }) {
   return (
-    <button className={`${styles.btn} ${className || ""}`} {...props}>
+    <button
+      type="button"
+      className={`${styles.btn} ${className || ''}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

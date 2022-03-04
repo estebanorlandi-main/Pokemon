@@ -1,10 +1,10 @@
 const colors = {
-  default: "var(--hex-steel)",
-  light: "#fff",
-  dark: "#252525",
+  default: 'var(--hex-steel)',
+  light: '#fff',
+  dark: '#252525',
 };
 
-function SteelIcon({ fill = "default", className, size = "1rem" }) {
+function SteelIcon({ fill = 'default', className, size = '1rem' }) {
   return (
     <svg
       className={className}

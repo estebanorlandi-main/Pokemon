@@ -1,10 +1,10 @@
 const colors = {
-  default: "var(--hex-dark)",
-  light: "#fff",
-  dark: "#252525",
+  default: 'var(--hex-dark)',
+  light: '#fff',
+  dark: '#252525',
 };
 
-function DarkIcon({ fill = "default", className, size = "1rem" }) {
+function DarkIcon({ fill = 'default', className, size = '1rem' }) {
   return (
     <svg
       className={className}

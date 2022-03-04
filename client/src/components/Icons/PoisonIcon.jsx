@@ -1,10 +1,10 @@
 const colors = {
-  default: "var(--hex-poison)",
-  light: "#fff",
-  dark: "#252525",
+  default: 'var(--hex-poison)',
+  light: '#fff',
+  dark: '#252525',
 };
 
-function PoisonIcon({ fill = "default", className, size = "1rem" }) {
+function PoisonIcon({ fill = 'default', className, size = '1rem' }) {
   return (
     <svg
       className={className}

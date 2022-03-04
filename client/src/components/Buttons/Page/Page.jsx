@@ -1,8 +1,12 @@
-import styles from "./Page.module.css";
+import styles from './Page.module.css';
 
-export function Page({ children, className, ...props }) {
+export default function Page({ children, className, onClick }) {
   return (
-    <button className={`${styles.btn} ${className || ""}`} {...props}>
+    <button
+      type="button"
+      className={`${styles.btn} ${className || ''}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

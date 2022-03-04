@@ -1,10 +1,10 @@
 const colors = {
-  default: "var(--hex-electric)",
-  light: "#fff",
-  dark: "#252525",
+  default: 'var(--hex-electric)',
+  light: '#fff',
+  dark: '#252525',
 };
 
-function ElectricIcon({ fill = "default", className, size = "1rem" }) {
+function ElectricIcon({ fill = 'default', className, size = '1rem' }) {
   return (
     <svg
       className={className}

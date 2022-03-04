@@ -1,10 +1,10 @@
 const colors = {
-  default: "var(--hex-normal)",
-  light: "#fff",
-  dark: "#252525",
+  default: 'var(--hex-normal)',
+  light: '#fff',
+  dark: '#252525',
 };
 
-function NormalIcon({ fill = "default", className, size = "1rem" }) {
+function NormalIcon({ fill = 'default', className, size = '1rem' }) {
   return (
     <svg
       className={className}

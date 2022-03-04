@@ -1,22 +1,22 @@
-import { useNavigate } from "react-router";
+import { useNavigate } from 'react-router';
 
-import { BiRightArrowAlt } from "react-icons/bi";
-import { Primary } from "components/Buttons";
+import { BiRightArrowAlt } from 'react-icons/bi';
+import { Primary } from 'components/Buttons';
 
-import styles from "./Landing.module.css";
+import styles from './Landing.module.css';
 
 function Landing() {
   const navigate = useNavigate();
 
   const goHome = () => {
-    navigate("/home");
+    navigate('/home');
   };
 
   return (
     <main>
       <section className={styles.main}>
         <div className={styles.header}>
-          <h3 className={styles.subtitle}>Catch 'em all!</h3>
+          <h3 className={styles.subtitle}>Catch &rsquo;em all!</h3>
           <h1 className={styles.title}>Pokemon</h1>
         </div>
 

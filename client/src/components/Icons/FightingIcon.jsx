@@ -1,10 +1,10 @@
 const colors = {
-  default: "var(--hex-fighting)",
-  light: "#fff",
-  dark: "#252525",
+  default: 'var(--hex-fighting)',
+  light: '#fff',
+  dark: '#252525',
 };
 
-function FightingIcon({ fill = "default", className, size = "1rem" }) {
+function FightingIcon({ fill = 'default', className, size = '1rem' }) {
   return (
     <svg
       className={className}

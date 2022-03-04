@@ -1,10 +1,10 @@
 const colors = {
-  default: "var(--hex-bug)",
-  light: "#fff",
-  dark: "#252525",
+  default: 'var(--hex-bug)',
+  light: '#fff',
+  dark: '#252525',
 };
 
-function BugIcon({ fill = "default", className, size = "1rem" }) {
+function BugIcon({ fill = 'default', className, size = '1rem' }) {
   return (
     <svg
       className={className}
