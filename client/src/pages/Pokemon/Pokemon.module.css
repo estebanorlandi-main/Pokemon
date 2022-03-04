@@ -1,14 +1,9 @@
-.bgontainer {
-  display: flex;
-  flex-flow: column;
-  justify-content: flex-start;
-
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-
 .top_bar {
+  position: fixed;
+  z-index: 9;
+  width: 100%;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -96,7 +91,7 @@
   text-decoration: none;
   color: #fff;
   padding: 0.5rem 1rem;
-  background: #333;
+  background: #2e2e2e;
   border-radius: 5rem;
   border: none;
 }
@@ -163,59 +158,44 @@
 }
 
 @media screen and (min-width: 45rem) {
-  .bgontainer {
-    flex-flow: column;
-  }
-
   .back_btn span {
     display: block;
   }
 
   .main {
-    margin: 3rem 0;
+    position: relative;
     display: flex;
-    justify-content: space-between;
-    height: 100%;
-    align-items: center;
-  }
-
-  .main figure {
-    max-width: max-content;
-    margin: 0 auto;
+    max-height: 100vh;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
   }
 
   .image_container {
-    transform: translate(-100%, 0);
-  }
-  .image_enter {
-    transform: translate(0, 0);
-    opacity: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
   }
 
+  .image_container > div {
+    position: relative;
+    width: 100%;
+    height: max-content;
+  }
   .pokemon_image {
-    width: 25vw;
-    min-width: 20rem;
-    max-width: 25rem;
-  }
-
-  .pokemon_types {
-    margin: 0 0 2rem 0;
-  }
-
-  .pokemon_type {
-    font-size: 1.25rem;
-    cursor: pointer;
-  }
-  .pokemon_type_icon {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 100%;
   }
 
   .body {
-    width: 100%;
-    padding: 0 5vw;
+    display: flex;
+    flex-flow: column;
+    background-color: #222;
+    padding: 5vh 5vw;
   }
 
+  .pokemon_types {
+    margin: 2rem 0;
+  }
   .pokemon_name {
     text-align: left;
   }
@@ -225,10 +205,12 @@
   }
 
   .info_list {
-    display: flex;
-    flex-flow: row wrap;
+    grid-template-columns: 1fr 1fr;
+    width: max-content;
   }
+
   .info_item {
-    width: 7rem;
+    width: 200px;
+    max-width: 200px;
   }
 }

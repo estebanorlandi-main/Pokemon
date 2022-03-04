@@ -5,13 +5,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import { fetchDetails, removeDetails } from 'redux/actions/pokemon';
 import { getPokemonImage } from 'utils';
-import StatsList from 'components/StatsList/StatsList';
 
+import StatsList from 'components/StatsList/StatsList';
 import Image from 'components/Image';
 import ListTypes from 'components/ListTypes/ListTypes';
-
 import Loader from 'components/Loader/Loader';
+
 import styles from './Pokemon.module.css';
+import { MdSignalWifiConnectedNoInternet0 } from 'react-icons/md';
 
 function Pokemon() {
   const dispatch = useDispatch();
@@ -63,15 +64,17 @@ function Pokemon() {
               isLoaded ? styles.image_enter : ''
             }`}
           >
-            {pokemon?.name ? (
-              <Image
-                onLoad={handleLoad}
-                className={styles.pokemon_image}
-                src={getPokemonImage(pokemon?.id)}
-                alt=""
-              />
-            ) : null}
-            <div className={`${styles.decoration} c-${color}`} />
+            <div>
+              {pokemon?.name ? (
+                <Image
+                  onLoad={handleLoad}
+                  className={styles.pokemon_image}
+                  src={getPokemonImage(pokemon?.id)}
+                  alt=""
+                />
+              ) : null}
+              <div className={`${styles.decoration} c-${color}`} />
+            </div>
           </div>
 
           <div className={styles.body}>
