@@ -6,7 +6,7 @@ const encodeQuery = (data) => {
   const encoded = [];
 
   Object.entries(data).forEach((d) => {
-    if (d[0] && d[0] !== 'page')
+    if (d[1] && d[0] !== 'page')
       encoded.push(`${encodeURIComponent(d[0])}=${encodeURIComponent(d[1])}`);
   });
   return encoded.join('&');

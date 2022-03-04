@@ -34,6 +34,8 @@ function PokemonCard({ id, name, types }) {
             onLoad={onImageLoad}
             src={pokemonImg}
             alt={name}
+            width="400"
+            height="400"
           />
         </div>
 

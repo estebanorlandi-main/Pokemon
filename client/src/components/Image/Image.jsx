@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import missingno from 'assets/images/MissingNo.png';
 
-function Image({ onLoad, alt, src, className, animationClass }) {
+function Image({ onLoad, src, className, animationClass, alt, width, height }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [image, setImage] = useState(src);
 
@@ -23,6 +23,8 @@ function Image({ onLoad, alt, src, className, animationClass }) {
       className={`${className} ${isLoaded ? animationClass : ''}`}
       src={image}
       alt={alt}
+      width={width}
+      height={height}
     />
   );
 }
