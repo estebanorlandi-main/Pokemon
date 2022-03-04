@@ -12,7 +12,6 @@ import ListTypes from 'components/ListTypes/ListTypes';
 import Loader from 'components/Loader/Loader';
 
 import styles from './Pokemon.module.css';
-import { MdSignalWifiConnectedNoInternet0 } from 'react-icons/md';
 
 function Pokemon() {
   const dispatch = useDispatch();
