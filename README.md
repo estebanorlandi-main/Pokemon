@@ -1,4 +1,8 @@
 # Pokemon
+|  |  |
+:-------------------------:|:-------------------------:
+| ![Landing Page](https://github.com/estebanorlandi4/Pokemon/blob/main/images/pokemon_landing.jpg?raw=true) | ![Home](https://github.com/estebanorlandi4/Pokemon/blob/main/images/pokemon_home.jpg?raw=true) |
+| ![Filters](https://github.com/estebanorlandi4/Pokemon/blob/main/images/pokemon_filters.jpg?raw=true) | ![Pokemon](https://github.com/estebanorlandi4/Pokemon/blob/main/images/pokemon.jpg?raw=true)  |
 
 ## About The Project
 
