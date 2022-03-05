@@ -64,7 +64,6 @@
   margin: 0 auto;
   width: 15rem;
   max-width: 30rem;
-  filter: drop-shadow(0 0.75rem 0.5rem #0005);
 }
 
 .pokemon_types {
@@ -94,6 +93,7 @@
   background: #2e2e2e;
   border-radius: 5rem;
   border: none;
+  cursor: pointer;
 }
 
 .pokemon_type_icon {
