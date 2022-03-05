@@ -14,6 +14,7 @@ const PokemonSchema: Schema = new Schema<Pokemon>({
       name: String,
     },
   ],
+
   types: [{ type: String, required: false }],
 });
 

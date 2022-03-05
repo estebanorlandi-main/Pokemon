@@ -27,8 +27,16 @@ export interface PokeapiType {
   type: { name: string; url: string };
 }
 
+export interface PokeapiAbility {
+  ability: {
+    name: string;
+    url: string;
+  };
+  is_hidden: boolean;
+  slot: number;
+}
+
 export interface PokeapiPokemon {
-  abilities: any;
   game_indices: any;
   held_items: any;
 
@@ -39,5 +47,6 @@ export interface PokeapiPokemon {
   sprites: PokeapiSprites;
   stats: PokeapiStats[];
   types: PokeapiType[];
+  abilities: PokeapiAbility[];
   weight: number;
 }

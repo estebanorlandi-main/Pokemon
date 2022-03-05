@@ -1,7 +1,13 @@
+import axios from "axios";
 import PokemonModel from "../models/Pokemon";
 
 import { fetchPokemons } from "./pokeapi";
-import { PokeapiStats, PokeapiType } from "./pokeapiTypes";
+import {
+  PokeapiAbility,
+  PokeapiPokemon,
+  PokeapiStats,
+  PokeapiType,
+} from "./pokeapiTypes";
 import { Pokemon } from "./pokemonTypes";
 import { pokeapi } from "./urls";
 
@@ -10,24 +16,33 @@ interface GetAll {
   skip: number;
   limit: number;
   options: object;
+  sort: object;
 }
 
-export const getAll = async ({ find, options, skip, limit }: GetAll) => {
-  return await PokemonModel.find(find, options).skip(skip).limit(limit);
+export const getAll = async ({ find, options, skip, limit, sort }: GetAll) => {
+  return await PokemonModel.find(find, options, sort).skip(skip).limit(limit);
 };
 
-const save_pokemon = async (pokemon: Pokemon) => {
-  const new_pokemon = new PokemonModel({
+const sanitize = (pokemon: PokeapiPokemon) => {
+  const sanitized: Pokemon = {
+    stats: [],
+    types: [],
     id: pokemon.id,
     name: pokemon.name,
-    types: pokemon.types,
-    stats: pokemon.stats,
-    height: pokemon.height,
     base_experience: pokemon.base_experience,
+    height: pokemon.height,
     weight: pokemon.weight,
+  };
+
+  pokemon.stats?.map(({ base_stat, stat }: PokeapiStats) =>
+    sanitized.stats.push({ base: base_stat, name: stat.name })
+  );
+
+  pokemon.types?.map(({ type }: PokeapiType) => {
+    sanitized.types.push(type.name);
   });
 
-  await new_pokemon.save();
+  return sanitized;
 };
 
 export const load_pokemons = async () => {
@@ -37,31 +52,13 @@ export const load_pokemons = async () => {
     const promise = fetchPokemons(currentUrl);
     const { pokemons, next } = await promise;
 
-    await Promise.all(
-      pokemons.map(async (pokemon) => {
-        const sanitized: Pokemon = {
-          stats: [],
-          types: [],
-          id: pokemon.id,
-          name: pokemon.name,
-          base_experience: pokemon.base_experience,
-          height: pokemon.height,
-          weight: pokemon.weight,
-        };
-
-        pokemon.stats?.map(({ base_stat, stat }: PokeapiStats) =>
-          sanitized.stats.push({ base: base_stat, name: stat.name })
-        );
-
-        pokemon.types?.map(({ type }: PokeapiType) => {
-          sanitized.types.push(type.name);
-        });
-
-        save_pokemon(sanitized);
-      })
-    );
+    pokemons.map((pokemon) => {
+      const sanitized = sanitize(pokemon);
+      const newPokemon = new PokemonModel(sanitized);
+      newPokemon.save();
+    });
 
     currentUrl = next;
   }
-  console.log("[Server]: Pokemons Loaded: " + (await PokemonModel.count()));
+  console.log("[Server]: Wait a minute");
 };

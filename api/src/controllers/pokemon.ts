@@ -13,10 +13,20 @@ const paginate = (page: number) => ({
   limit: options.perPage,
 });
 
+const encodeQuery = (data: object) => {
+  const encoded: string[] = [];
+
+  Object.entries(data).forEach((d) => {
+    if (d[1] && d[0] !== "page")
+      encoded.push(`${encodeURIComponent(d[0])}=${encodeURIComponent(d[1])}`);
+  });
+  return encoded.join("&");
+};
+
 export default {
   getPokemons: async function (req: Request, res: Response) {
     try {
-      const { type, search } = req.query;
+      const { type, search, order } = req.query;
       const page = req.params.page ? Number(req.params.page) : 0;
 
       let self_url =
@@ -39,6 +49,7 @@ export default {
         options: { name: 1, id: 1, types: 1 },
         skip,
         limit,
+        sort: { sort: { id: order === "reverse" ? -1 : 1 } },
       });
 
       if (!pokemons.length) throw new Error("Pokemons not found");
