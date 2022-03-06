@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { PokemonType } from "../utils/pokemonTypes";
+import { PokemonType } from "../utils/Types";
 
 export const TypeSchema: Schema = new Schema<PokemonType>({
   name: { type: String, required: true },

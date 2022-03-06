@@ -1,27 +1,8 @@
-import axios from "axios";
 import PokemonModel from "../models/Pokemon";
 
 import { fetchPokemons } from "./pokeapi";
-import {
-  PokeapiAbility,
-  PokeapiPokemon,
-  PokeapiStats,
-  PokeapiType,
-} from "./pokeapiTypes";
-import { Pokemon } from "./pokemonTypes";
+import { PokeapiPokemon, PokeapiStats, PokeapiType, Pokemon } from "./Types";
 import { pokeapi } from "./urls";
-
-interface GetAll {
-  find: object;
-  skip: number;
-  limit: number;
-  options: object;
-  sort: object;
-}
-
-export const getAll = async ({ find, options, skip, limit, sort }: GetAll) => {
-  return await PokemonModel.find(find, options, sort).skip(skip).limit(limit);
-};
 
 const sanitize = (pokemon: PokeapiPokemon) => {
   const sanitized: Pokemon = {

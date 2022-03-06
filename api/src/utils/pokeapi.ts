@@ -1,5 +1,5 @@
-import axios, { AxiosResponse } from "axios";
-import { PokeapiPokemon, PokeapiPokemonResponse } from "./pokeapiTypes";
+import axios from "axios";
+import { PokeapiPokemon, PokeapiPokemonResponse } from "./Types";
 
 interface Resolve {
   pokemons: PokeapiPokemon[];
