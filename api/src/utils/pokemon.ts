@@ -46,7 +46,6 @@ export const load_pokemons = async () => {
       })
     );
 
-    console.log(next);
     currentUrl = next;
   }
 
