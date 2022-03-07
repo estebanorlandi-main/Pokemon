@@ -17,7 +17,9 @@ const usePokemons = (search) => {
       const res = await dispatch(fetchPokemons(params));
       setIsLoading(false);
       if (!res) return;
-      const { next, prev } = res;
+      const {
+        paginate: { next, prev },
+      } = res;
       setPages({ prev, next });
     };
 
@@ -32,7 +34,9 @@ const usePokemons = (search) => {
   const handlePrev = async () => {
     if (!pages.prev) return;
     setIsLoading(true);
-    const { next, prev } = await dispatch(fetchPokemons({ page: pages.prev }));
+    const {
+      paginate: { next, prev },
+    } = await dispatch(fetchPokemons({ page: pages.prev }));
     setIsLoading(false);
     setPages({ next, prev });
   };
@@ -41,7 +45,9 @@ const usePokemons = (search) => {
     if (!pages.next) return;
     setIsLoading(true);
 
-    const { next, prev } = await dispatch(fetchPokemons({ page: pages.next }));
+    const {
+      paginate: { next, prev },
+    } = await dispatch(fetchPokemons({ page: pages.next }));
     setIsLoading(false);
     setPages({ next, prev });
   };
