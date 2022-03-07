@@ -26,8 +26,9 @@ db.once("open", () => {
               console.log(e);
             }
           }
+
+          load_pokemons();
         });
-      load_pokemons();
     }
   } catch (e: any) {
     console.log(e);
