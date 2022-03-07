@@ -17,19 +17,17 @@ const initialState = {
 function pokemonReducer(state = initialState, action = {}) {
   switch (action.type) {
     case GET_POKEMONS: {
-      const { results, next, page, prev, count, total, perPage } =
-        action.payload;
+      const { results, paginate, count, total } = action.payload;
 
-      const viewed = total - (total - page * perPage - count);
+      const viewed = total - (total - paginate.page * paginate.perPage - count);
 
       return {
         ...state,
+        ...paginate,
+
         pokemons: results,
         viewed,
         total,
-        page,
-        next,
-        prev,
       };
     }
 
