@@ -37,8 +37,12 @@ export const load_pokemons = async () => {
     await Promise.all(
       pokemons.map(async (pokemon) => {
         const sanitized = sanitize(pokemon);
-        const newPokemon = new PokemonModel(sanitized);
-        await newPokemon.save();
+        try {
+          const newPokemon = new PokemonModel(sanitized);
+          await newPokemon.save();
+        } catch (e: any) {
+          console.log(e);
+        }
       })
     );
 
