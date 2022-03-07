@@ -33,13 +33,15 @@ export const load_pokemons = async () => {
     const promise = fetchPokemons(currentUrl);
     const { pokemons, next } = await promise;
 
-    pokemons.map((pokemon) => {
-      const sanitized = sanitize(pokemon);
-      const newPokemon = new PokemonModel(sanitized);
-      newPokemon.save();
-    });
+    await Promise.all(
+      pokemons.map((pokemon) => {
+        const sanitized = sanitize(pokemon);
+        const newPokemon = new PokemonModel(sanitized);
+        newPokemon.save();
+      })
+    );
 
     currentUrl = next;
   }
-  console.log("[Server]: Wait a minute");
+  console.log(`[Server]: Pokemons loaded: ${await PokemonModel.count()}`);
 };
