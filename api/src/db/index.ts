@@ -15,10 +15,16 @@ db.once("open", () => {
       db.db
         .listCollections({ name: "pokemons" })
         .toArray(async (err, names) => {
-          if (err || !names) return;
+          if (err || !names)
+            return console.log("[DB]: Collection error: ", err);
 
           if (names[0].name === "pokemons") {
-            await PokemonModel.collection.drop();
+            try {
+              await PokemonModel.collection.drop();
+              console.log("[DB]: Collection droped");
+            } catch (e: any) {
+              console.log(e);
+            }
           }
         });
       load_pokemons();

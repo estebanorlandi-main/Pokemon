@@ -29,19 +29,22 @@ const sanitize = (pokemon: PokeapiPokemon) => {
 export const load_pokemons = async () => {
   console.log("[Server]: Loading Pokemons");
   let currentUrl: string | null = pokeapi.pokemons;
+
   while (currentUrl) {
     const promise = fetchPokemons(currentUrl);
     const { pokemons, next } = await promise;
 
     await Promise.all(
-      pokemons.map((pokemon) => {
+      pokemons.map(async (pokemon) => {
         const sanitized = sanitize(pokemon);
         const newPokemon = new PokemonModel(sanitized);
-        newPokemon.save();
+        await newPokemon.save();
       })
     );
 
+    console.log(next);
     currentUrl = next;
   }
-  console.log(`[Server]: Pokemons loaded: ${await PokemonModel.count()}`);
+
+  console.log(`[Server]: Pokemons loaded`);
 };
