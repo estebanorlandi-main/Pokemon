@@ -16,7 +16,7 @@ if (NODE_ENV !== "production") {
 app.use(cors());
 app.use(routes);
 
-run({ reload: false });
+run({ reload: true });
 
 app.listen(PORT, () =>
   console.log(`[server]: Server is running at port ${PORT}`)
