@@ -7,17 +7,36 @@ const URI = DB_URI || `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`;
 
 const db = mongoose.connection;
 
-db.once("open", async () => {
+let restart = false;
+
+db.once("open", () => {
   try {
-    const pokemons = await PokemonModel.count({});
-    if (!pokemons) await load_pokemons();
+    if (restart) {
+      db.db
+        .listCollections({ name: "pokemons" })
+        .toArray(async (err, names) => {
+          if (err || !names) return;
+
+          if (names[0].name === "pokemons") {
+            await PokemonModel.collection.drop();
+          }
+        });
+      load_pokemons();
+    }
   } catch (e: any) {
     console.log(e);
   }
 });
 
-export default async function run(): Promise<void> {
+interface RunOptions {
+  reload?: boolean;
+}
+
+export default async function run({
+  reload = false,
+}: RunOptions): Promise<void> {
   try {
+    restart = reload;
     await mongoose.connect(URI);
     console.log(`[DB]: Mongoose connected on ${URI}`);
   } catch (e: any) {

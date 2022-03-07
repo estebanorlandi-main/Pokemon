@@ -1,5 +1,5 @@
-import cors from "cors";
 import express from "express";
+import cors from "cors";
 import routes from "./routes";
 import run from "./db";
 import morgan from "morgan";
@@ -16,7 +16,7 @@ if (NODE_ENV !== "production") {
 app.use(cors());
 app.use(routes);
 
-run();
+run({ reload: false });
 
 app.listen(PORT, () =>
   console.log(`[server]: Server is running at port ${PORT}`)

@@ -8,19 +8,17 @@ export const SET_SEARCH = 'SET_SEARCH';
 export const SET_TYPE = 'SET_TYPE';
 export const ERROR = 'ERROR';
 
-export const fetchPokemons =
-  ({ page, type, search }) =>
-  async (dispatch) => {
-    dispatch({ type: REMOVE_POKEMONS });
-    try {
-      const payload = await getPokemons({ page, type, search });
-      dispatch({ type: GET_POKEMONS, payload });
-      return payload;
-    } catch (e) {
-      dispatch({ type: ERROR, payload: e.response.data });
-      return e;
-    }
-  };
+export const fetchPokemons = (query) => async (dispatch) => {
+  dispatch({ type: REMOVE_POKEMONS });
+  try {
+    const payload = await getPokemons(query);
+    dispatch({ type: GET_POKEMONS, payload });
+    return payload;
+  } catch (e) {
+    dispatch({ type: ERROR, payload: e.response.data });
+    return e;
+  }
+};
 
 export const fetchDetails = (id) => async (dispatch) => {
   dispatch({ type: REMOVE_DETAILS_POKEMON });

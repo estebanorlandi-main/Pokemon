@@ -12,7 +12,7 @@ const usePokemons = (search) => {
 
   useEffect(() => {
     const promise = async () => {
-      const params = { page: Number(page), type };
+      const params = { page: Number(page), type, order: 'reverse' };
       if (search) params.search = search;
       const res = await dispatch(fetchPokemons(params));
       setIsLoading(false);

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PokeapiPokemon, PokeapiPokemonResponse } from "./pokeapiTypes";
+import { PokeapiPokemon, PokeapiPokemonResponse } from "./Types";
 
 interface Resolve {
   pokemons: PokeapiPokemon[];
@@ -8,23 +8,35 @@ interface Resolve {
   count: number;
 }
 
+interface PokemonAxios {
+  name: string;
+  url: string;
+}
+
+const getPokemonDetails = async (results: PokemonAxios[]) => {
+  const promises = results?.map(({ url }) => axios.get(url));
+  return await Promise.all(promises).then((pokemons) =>
+    pokemons.map(({ data }) => data)
+  );
+};
+
+const handle_response = async (data: PokeapiPokemonResponse) => {
+  const { next, previous, count, results } = data;
+  return {
+    pokemons: await getPokemonDetails(results),
+    next,
+    prev: previous,
+    count,
+  };
+};
+
 export const fetchPokemons = (page: string) => {
   return new Promise<Resolve>((resolve, reject) => {
     axios
       .get<PokeapiPokemonResponse>(page)
-      .then(({ data }) => {
-        const pokemonsPromises = data.results?.map(({ url }) => axios.get(url));
-        Promise.all(pokemonsPromises)
-          .then((pokemons) => {
-            const res = {
-              pokemons: pokemons.map(({ data }) => data),
-              next: data.next,
-              prev: data.previous,
-              count: data.count,
-            };
-            resolve(res);
-          })
-          .catch(reject);
+      .then(async ({ data }) => {
+        const resolveWith = await handle_response(data);
+        resolve(resolveWith);
       })
       .catch(reject);
   });
