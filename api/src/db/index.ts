@@ -22,12 +22,11 @@ db.once("open", () => {
             try {
               await PokemonModel.collection.drop();
               console.log("[DB]: Collection droped");
+              load_pokemons();
             } catch (e: any) {
               console.log(e);
             }
           }
-
-          load_pokemons();
         });
     }
   } catch (e: any) {
