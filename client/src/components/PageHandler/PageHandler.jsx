@@ -4,6 +4,8 @@ import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 import styles from './PageHandler.module.css';
 
 export default function PageHandler({ next, prev, current, children }) {
+  if (!next && !prev) return children;
+
   return (
     <>
       {children}

@@ -9,6 +9,13 @@ function PokemonList() {
   const { pokemons, viewed, total } = useSelector((state) => state.pokemons);
   const { type } = useParams();
 
+  if (!pokemons.length)
+    return (
+      <div>
+        <h1 className={styles.not_found}>Pokemons Not Found</h1>
+      </div>
+    );
+
   return (
     <>
       <div className={styles.inline}>

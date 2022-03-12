@@ -70,3 +70,10 @@
     grid-template-columns: repeat(8, 1fr);
   }
 }
+
+.not_found {
+  width: max-content;
+  margin: 5rem auto;
+  color: #fff;
+  font-size: 1.25rem;
+}
