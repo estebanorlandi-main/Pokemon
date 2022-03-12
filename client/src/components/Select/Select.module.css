@@ -9,12 +9,16 @@
   justify-content: space-between;
   padding: 0.75rem;
   width: 100%;
+  background-color: #1e1e1e;
   border-radius: 0.15rem;
-  background-color: #2e2e2e;
   border: 2px solid #333;
   color: #888;
   user-select: none;
   font-weight: bold;
+}
+
+.selected:hover {
+  background-color: #fff1;
 }
 
 .selected_left {
@@ -76,6 +80,7 @@
 @media screen and (min-width: 40rem) {
   .selected {
     padding: 0.5rem;
+    padding-left: 0.75rem;
     height: 3rem;
   }
   .btn {

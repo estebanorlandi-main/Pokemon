@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import { fetchPokemons, removePokemons } from 'redux/actions/pokemon';
 
-const usePokemons = (search) => {
+const usePokemons = ({ search, order = 1 }) => {
   const dispatch = useDispatch();
   const [pages, setPages] = useState({ next: null, prev: null });
   const [isLoading, setIsLoading] = useState(false);
@@ -11,9 +11,17 @@ const usePokemons = (search) => {
   const { type = null, page = 0 } = useParams();
 
   useEffect(() => {
+    if (!type) document.title = `Pokedex | Home`;
+    else document.title = `Pokedex | Home ${type}`;
+
     const promise = async () => {
-      const params = { page: Number(page), type, order: 'reverse' };
-      if (search) params.search = search;
+      const params = {
+        page: Number(page),
+        type,
+        order,
+        ...(search ? { search } : {}),
+      };
+
       const res = await dispatch(fetchPokemons(params));
       setIsLoading(false);
       if (!res) return;
@@ -29,7 +37,7 @@ const usePokemons = (search) => {
     return () => {
       dispatch(removePokemons());
     };
-  }, [dispatch, type, page, search]);
+  }, [dispatch, type, page, search, order]);
 
   const handlePrev = async () => {
     if (!pages.prev) return;

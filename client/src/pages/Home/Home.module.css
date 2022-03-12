@@ -24,6 +24,13 @@
   width: 100%;
 }
 
+.order_container {
+  margin: 0 0 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+}
+
 @media screen and (min-width: 40rem) {
   .filters {
     flex-flow: row;
@@ -36,5 +43,10 @@
   .search_container {
     width: max-content;
     max-width: 25rem;
+  }
+
+  .order_container {
+    width: max-content;
+    margin: 0 auto 0 0;
   }
 }

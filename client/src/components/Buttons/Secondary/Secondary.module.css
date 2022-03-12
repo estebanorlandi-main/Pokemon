@@ -1,0 +1,17 @@
+.btn {
+  background: transparent;
+  border: 1px solid #fff2;
+  border-radius: 2px;
+  color: #fff;
+  height: 100%;
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  font-weight: bold;
+  padding: 0.5rem;
+  padding-left: 1rem;
+}
+
+.btn:hover {
+  background: #fff1;
+}
