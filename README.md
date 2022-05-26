@@ -7,7 +7,7 @@
 ## About The Project
 
 Pokemon website where you can search pokemons, filter by type, and see more details of the pokemon.
-The site is actually deployed in [Netlify](https://esteban-pokedex.netlify.app).
+The site is actually deployed in [Netlify](https://missingnodex.netlify.app/).
 Pokemons are loaded from [pokeapi.co](https://pokeapi.co/)
 
 ## Built With
