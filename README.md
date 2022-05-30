@@ -13,7 +13,7 @@ Pokemons are loaded from [pokeapi.co](https://pokeapi.co/)
 ## Built With
 
 - JavaScript
-- TyepScript
+- TypeScript
 - React.js
 - Redux
 - Node.js
